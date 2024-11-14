@@ -1,16 +1,11 @@
 package com.vlad.producer;
 
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
-
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.serialization.StringSerializer;
 
 public class SystemMetricsProducer {
 
@@ -36,13 +31,12 @@ public class SystemMetricsProducer {
         properties.put("value.serializer", StringSerializer.class.getName());
 
         // 2. Create a KafkaConsumer instance
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
         // 3. Send message
-        String key = "key1";
-        String value = "Hello kafka";
 
-        try {
+        try (KafkaProducer<String, String> producer = new KafkaProducer<>(properties)) {
+            String key = "key1";
+            String value = "Hello kafka";
             for (int i = 0; i < 100; i++) {
                 ProducerRecord<String, String> record = new ProducerRecord<>(TEST_TOPIC, key + i, value + i);
 
@@ -50,14 +44,12 @@ public class SystemMetricsProducer {
                 RecordMetadata metadata = producer.send(record).get();
 
                 // 5. Print metadata for the sent record
-                System.out.printf("Message sent to topic: %s, partition %d, offset: %d%n\n", metadata.topic(), metadata.partition(), metadata.offset());
+                System.out.printf(
+                        "Message sent to topic: %s, partition %d, offset: %d%n\n",
+                        metadata.topic(), metadata.partition(), metadata.offset());
             }
-        } catch (InterruptedException | ExecutionException e){
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
-        } finally {
-            producer.close();
         }
-
-
     }
 }
