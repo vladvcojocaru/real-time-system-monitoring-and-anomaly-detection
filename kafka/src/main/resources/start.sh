@@ -7,13 +7,13 @@ kafka-storage.sh \
   --cluster-id $(kafka-storage.sh random-uuid) \
   --ignore-formatted
 
-# Start the kafka server
-kafka-server-start.sh server.properties
+# Start the Kafka server
+kafka-server-start.sh server.properties &
 
 # Wait for Kafka to fully start
 sleep 10
 
-# Create the __consumer_offset topic
+# Create the __consumer_offsets topic
 kafka-topics.sh --bootstrap-server localhost:9092 \
   --create \
   --topic __consumer_offsets \
@@ -21,4 +21,11 @@ kafka-topics.sh --bootstrap-server localhost:9092 \
   --replication-factor 1 \
   --config cleanup.policy=compact
 
-echo "Kafka server started and __consumer_offset topic created successfully."
+# Create the cpu-metrics topic
+kafka-topics.sh --bootstrap-server localhost:9092 \
+  --create \
+  --topic cpu-metrics \
+  --partitions 3 \
+  --replication-factor 1
+
+echo "Kafka server started and topics created successfully."
