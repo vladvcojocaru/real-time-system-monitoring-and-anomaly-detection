@@ -17,6 +17,7 @@ public class MainProducer {
 
     // Script that starts the server and creates the necessary topics
     private static final String START_SCRIPT = "src/main/resources/start.sh";
+
     /**
      * The main method initializes the services and starts the metric collection and publishing loop.
      *
@@ -33,16 +34,16 @@ public class MainProducer {
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(CPU_TOPIC);
 
         // Add a shutdown hook to gracefully close the Kafka producer on application exit.
-        Runtime.getRuntime().addShutdownHook(new Thread(() ->{
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("Shutting down...");
             cpuMetricProducer.close();
         }));
 
-        try{
+        try {
             // Continuous loop to collect and send CPU metrics at regular intervals.
-            while (true){
+            while (true) {
                 // Fetch the current CPU metrics (total load and per-core loads).
-                CpuMetric cpuMetric= metricsService.getCpuMetrics();
+                CpuMetric cpuMetric = metricsService.getCpuMetrics();
 
                 // Send the collected CPU metrics to Kafka.
                 cpuMetricProducer.sendCpuMetric(cpuMetric);

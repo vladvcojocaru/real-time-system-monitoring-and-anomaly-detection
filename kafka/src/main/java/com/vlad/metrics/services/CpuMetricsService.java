@@ -16,7 +16,7 @@ public class CpuMetricsService {
     private long[] prevTicks;
 
     // Stores previous tick values for calculating per-core CPU usage over time.
-    private long[][] prevCoreTicks; // For per-core cpu load
+    private long[][] prevCoreTicks;
 
     /**
      * Constructor initializes the processor and captures the initial tick values.
@@ -36,7 +36,7 @@ public class CpuMetricsService {
      *
      * @return A CpuMetric object containing the total CPU load and per-core loads.
      */
-    public CpuMetric getCpuMetrics(){
+    public CpuMetric getCpuMetrics() {
         // Get the current tick values for the total CPU and individual cores.
         long[] ticks = processor.getSystemCpuLoadTicks();
         long[][] coreTicks = processor.getProcessorCpuLoadTicks();
@@ -46,7 +46,7 @@ public class CpuMetricsService {
 
         // Calculate per-core CPU usage percentages.
         double[] coreLoads = new double[coreTicks.length];
-        for (int i = 0; i < coreTicks.length; i++){
+        for (int i = 0; i < coreTicks.length; i++) {
             coreLoads[i] = calculateCpuLoad(coreTicks[i], prevCoreTicks[i]);
         }
 
@@ -61,11 +61,11 @@ public class CpuMetricsService {
     /**
      * Calculates the CPU load (as a fraction) based on the difference between current and previous tick values.
      *
-     * @param currentTicks The current CPU tick values.
+     * @param currentTicks  The current CPU tick values.
      * @param previousTicks The previous CPU tick values.
      * @return A double value representing the CPU load, where 0.0 means 0% and 1.0 means 100%.
      */
-    private double calculateCpuLoad(long[] currentTicks, long[] previousTicks){
+    private double calculateCpuLoad(long[] currentTicks, long[] previousTicks) {
         // Compute differences for each CPU tick type (user, system, idle, etc.).
         long user = currentTicks[CentralProcessor.TickType.USER.getIndex()] - previousTicks[CentralProcessor.TickType.USER.getIndex()];
         long nice = currentTicks[CentralProcessor.TickType.NICE.getIndex()] - previousTicks[CentralProcessor.TickType.NICE.getIndex()];

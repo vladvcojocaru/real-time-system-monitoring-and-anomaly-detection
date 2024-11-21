@@ -16,7 +16,7 @@ public class KafkaProducerConfig {
      *
      * @return A KafkaProducer<String, String> instance configured for the application.
      */
-    public static KafkaProducer<String, String> createProducer(){
+    public static KafkaProducer<String, String> createProducer() {
         // Kafka producer properties
         Properties properties = new Properties();
 

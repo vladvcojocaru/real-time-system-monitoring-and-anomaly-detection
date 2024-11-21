@@ -36,7 +36,7 @@ public class CpuMetricProducer {
      *
      * @param metric The CpuMetric object containing total CPU load and per-core loads.
      */
-    public void sendCpuMetric(CpuMetric metric){
+    public void sendCpuMetric(CpuMetric metric) {
         // Serialize the CpuMetric object to a JSON string for Kafka payload.
         String payload = metric.toJson();
 
@@ -60,7 +60,7 @@ public class CpuMetricProducer {
      * Closes the Kafka producer to release resources.
      * This should be called when the producer is no longer needed, typically during application shutdown.
      */
-    public void close(){
+    public void close() {
         producer.close();
     }
 }

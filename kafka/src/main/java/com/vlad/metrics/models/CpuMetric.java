@@ -46,6 +46,7 @@ public class CpuMetric {
     }
 
     // TODO: change this to use PROTOBUF
+
     /**
      * Serializes the CpuMetric object into a JSON string using Gson.
      * Before serialization, all values (total and per-core loads) are sanitized
@@ -53,7 +54,7 @@ public class CpuMetric {
      *
      * @return A JSON string representation of the CpuMetric object.
      */
-    public String toJson(){
+    public String toJson() {
         // Sanitize total CPU load
         double sanitizedTotalLoad = sanitize(totalLoad);
 

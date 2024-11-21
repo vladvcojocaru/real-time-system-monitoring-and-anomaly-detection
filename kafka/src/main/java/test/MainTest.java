@@ -13,7 +13,7 @@ public class MainTest {
         // Initialize ticks to calculate usage
         long[] prevTicks = processor.getSystemCpuLoadTicks();
 
-        while (true){
+        while (true) {
             Thread.sleep(1000);
 
             /*
@@ -39,7 +39,7 @@ public class MainTest {
 
             long totalCpu = user + nice + system + idle + iowait + irq + softirq + steal;
             double cpuUsage = 100.0 * (totalCpu - idle) / totalCpu;
-            System.out.printf("CPU Usage: %.2f%%\n",cpuUsage);
+            System.out.printf("CPU Usage: %.2f%%\n", cpuUsage);
 
             prevTicks = ticks;
         }
