@@ -39,3 +39,5 @@ test-annotations/
 # Script files that you don't want in the repo (optional)
 *.sh~
 
+# diagrma directory
+diagram/
