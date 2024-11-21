@@ -1,0 +1,6 @@
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/com/vlad/metrics/kafka/CpuMetricProducer.java
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/com/vlad/metrics/services/CpuMetricsService.java
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/com/vlad/metrics/MainProducer.java
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/com/vlad/metrics/models/CpuMetric.java
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/com/vlad/metrics/kafka/KafkaProducerConfig.java
+/home/vlad/Code-Stuff/real-time-system-monitoring-and-anomaly-detection/kafka/src/main/java/test/MainTest.java

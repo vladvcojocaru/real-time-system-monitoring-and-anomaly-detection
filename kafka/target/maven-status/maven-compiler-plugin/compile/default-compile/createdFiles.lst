@@ -1,0 +1,6 @@
+test/MainTest.class
+com/vlad/metrics/kafka/KafkaProducerConfig.class
+com/vlad/metrics/services/CpuMetricsService.class
+com/vlad/metrics/kafka/CpuMetricProducer.class
+com/vlad/metrics/MainProducer.class
+com/vlad/metrics/models/CpuMetric.class
