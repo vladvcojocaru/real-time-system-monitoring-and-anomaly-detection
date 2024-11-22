@@ -15,15 +15,18 @@ public class CpuMetric {
     // An array representing the percentage usage of each individual core.
     private double[] coreLoads;
 
+    private long[] frequency;
+
     /**
      * Constructor to initialize the CpuMetric object with total CPU load and per-core loads.
      *
      * @param totalLoad The total CPU usage as a percentage.
      * @param coreLoads An array of per-core usage percentages.
      */
-    public CpuMetric(double totalLoad, double[] coreLoads) {
+    public CpuMetric(double totalLoad, double[] coreLoads, long[] frequency) {
         this.totalLoad = totalLoad;
         this.coreLoads = coreLoads;
+        this.frequency = frequency;
     }
 
 
@@ -45,6 +48,10 @@ public class CpuMetric {
         return coreLoads;
     }
 
+    public long[] getFrequency() {
+        return frequency;
+    }
+
     // TODO: change this to use PROTOBUF
 
     /**
@@ -63,8 +70,10 @@ public class CpuMetric {
                 .map(this::sanitize) // Apply the sanitize method to each core load
                 .toArray();
 
+        // ! Frequency doesn't need sanitize because long can't be NaN or infinite
+
         // Create a sanitized CpuMetric object for serialization
-        CpuMetric sanitizedMetric = new CpuMetric(sanitizedTotalLoad, sanitizedCoreLoads);
+        CpuMetric sanitizedMetric = new CpuMetric(sanitizedTotalLoad, sanitizedCoreLoads, frequency);
 
         // Convert the sanitized object to JSON using Gson
         return new Gson().toJson(sanitizedMetric);
@@ -81,6 +90,7 @@ public class CpuMetric {
         return Double.isNaN(value) || Double.isInfinite(value) ? 0.0 : value;
     }
 
+
     /**
      * Provides a string representation of the CpuMetric object.
      * Useful for debugging or logging purposes.
@@ -92,6 +102,7 @@ public class CpuMetric {
         return "CpuMetric{" +
                 "totalLoad=" + totalLoad +
                 ", coreLoads=" + Arrays.toString(coreLoads) +
+                ", frequency=" + Arrays.toString(frequency) +
                 '}';
     }
 }

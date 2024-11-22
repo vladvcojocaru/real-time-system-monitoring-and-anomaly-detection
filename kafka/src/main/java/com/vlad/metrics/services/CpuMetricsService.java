@@ -50,12 +50,18 @@ public class CpuMetricsService {
             coreLoads[i] = calculateCpuLoad(coreTicks[i], prevCoreTicks[i]);
         }
 
+        // Get the frequency
+        long[] currentFrequencies = processor.getCurrentFreq();
+
+        // TODO: Check for null case
+
+
         // Update previous ticks with the current values for the next cycle.
         prevTicks = ticks;
         prevCoreTicks = coreTicks;
 
         // Return the CPU metrics as a CpuMetric object.
-        return new CpuMetric(totalLoad, coreLoads);
+        return new CpuMetric(totalLoad, coreLoads, currentFrequencies);
     }
 
     /**

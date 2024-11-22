@@ -26,7 +26,7 @@ public class MainProducer {
      */
     public static void main(String[] args) {
         // Run the start.sh script
-        runStartupScript();
+        // runStartupScript();
 
         // Initialize Services for collecting OSHI metrics
         CpuMetricsService cpuMetricsService = new CpuMetricsService();
