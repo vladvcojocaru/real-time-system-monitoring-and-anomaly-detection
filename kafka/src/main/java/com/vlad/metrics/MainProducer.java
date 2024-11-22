@@ -1,9 +1,12 @@
 package com.vlad.metrics;
 
 import com.vlad.metrics.kafka.CpuMetricProducer;
+import com.vlad.metrics.kafka.OsMetricProducer;
 import com.vlad.metrics.models.CpuMetric;
 import com.vlad.metrics.runnable.CpuMetricProducerRunnable;
+import com.vlad.metrics.runnable.OsMetricProducerRunnable;
 import com.vlad.metrics.services.CpuMetricsService;
+import com.vlad.metrics.services.OsMetricService;
 
 import java.io.IOException;
 
@@ -30,17 +33,22 @@ public class MainProducer {
 
         // Initialize Services for collecting OSHI metrics
         CpuMetricsService cpuMetricsService = new CpuMetricsService();
+        OsMetricService osMetricService = new OsMetricService();
 
         // Initialize Producers to send metrics to Kafka
-        CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(CPU_TOPIC);
+        CpuMetricProducer cpuMetricProducer = new CpuMetricProducer("cpu-metrics");
+        OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
 
         // Create Runnable threads for each producer
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(cpuMetricsService, cpuMetricProducer);
+        Runnable osMetricProducerRunnable = new OsMetricProducerRunnable(osMetricService, osMetricProducer);
 
         // Start the producer threads
         Thread cpuMetricProducerThread = new Thread(cpuMetricProducerRunnable);
+        Thread osMetricProducerThread = new Thread(osMetricProducerRunnable);
 
         cpuMetricProducerThread.start();
+        osMetricProducerThread.start();
 
         // Add a shutdown hook to gracefully close the Kafka producer on application exit.
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -51,6 +59,7 @@ public class MainProducer {
         try {
             // Main thread can be used for other tasks or simply to wait until shutdown
             cpuMetricProducerThread.join();
+            osMetricProducerThread.join();
         } catch (InterruptedException e) {
             System.err.println("Main thread interrupted: " + e.getMessage());
         }

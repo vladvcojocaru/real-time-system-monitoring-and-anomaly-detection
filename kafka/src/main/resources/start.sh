@@ -63,4 +63,17 @@ else
   log "Topic 'cpu-metrics' created successfully."
 fi
 
+# Ensure the os-metrics topic exists
+log "Ensuring topic 'os-metrics' exists..."
+if topic_exists "os-metrics"; then
+  log "Topic 'os-metrics' already exists, skipping creation."
+else
+  kafka-topics.sh --bootstrap-server localhost:9092 \
+    --create \
+    --topic os-metrics \
+    --partitions 3 \
+    --replication-factor 1
+  log "Topic 'os-metrics' created successfully."
+fi
+
 log "Script completed successfully."
