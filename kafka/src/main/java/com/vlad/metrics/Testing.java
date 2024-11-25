@@ -2,39 +2,38 @@ package com.vlad.metrics;
 
 import oshi.SystemInfo;
 import oshi.hardware.GlobalMemory;
+import oshi.hardware.HWDiskStore;
 import oshi.util.Util;
+
+import java.util.List;
 
 public class Testing {
     public static void main(String[] args) {
         SystemInfo systemInfo = new SystemInfo();
-        GlobalMemory memory = systemInfo.getHardware().getMemory();
 
         // Continuous monitoring loop
         while (true) {
-            System.out.println("----- Memory Metrics -----");
+            List<HWDiskStore> diskStores = systemInfo.getHardware().getDiskStores();
 
-            // Total and Used Physical Memory
-            long totalPhysicalMemory = memory.getTotal();
-            long usedPhysicalMemory = totalPhysicalMemory - memory.getAvailable();
+            System.out.println("----- Disk Metrics -----");
+            for (HWDiskStore disk : diskStores) {
+                // Update disk attributes to get the latest metrics
+                disk.updateAttributes();
 
-            // Total and Used Swap Memory
-            long totalSwapMemory = memory.getVirtualMemory().getSwapTotal();
-            long usedSwapMemory = memory.getVirtualMemory().getSwapUsed();
+                // Disk name and model
+                System.out.println("Disk: " + disk.getName());
+                System.out.println("Model: " + disk.getModel());
 
-            // Virtual Memory (In Use)
-            long virtualMemoryUsed = memory.getVirtualMemory().getVirtualInUse();
+                // Read and write metrics
+                System.out.printf("Reads: %d bytes (%d operations)\n", disk.getReadBytes(), disk.getReads());
+                System.out.printf("Writes: %d bytes (%d operations)\n", disk.getWriteBytes(), disk.getWrites());
+                System.out.printf("Current Queue Length: %d\n", disk.getCurrentQueueLength());
+                System.out.printf("Transfer Time: %.2f ms\n", disk.getTransferTime() / 1.0e3);
 
-            // Print Memory Metrics
-            System.out.println("----- Memory Metrics -----");
-            System.out.printf("Physical Memory - Total: %.2f GB, Used: %.2f GB\n",
-                    totalPhysicalMemory / 1e9, usedPhysicalMemory / 1e9);
-            System.out.printf("Swap Memory - Total: %.2f GB, Used: %.2f GB\n",
-                    totalSwapMemory / 1e9, usedSwapMemory / 1e9);
-            System.out.printf("Virtual Memory - In Use: %.2f GB\n",
-                    virtualMemoryUsed / 1e9);
-            System.out.println("--------------------------");
+                System.out.println("------------------------");
+            }
 
-            // Pause for 2 seconds before the next update
+            // Pause for 2 seconds before fetching the next set of metrics
             Util.sleep(2000);
         }
     }
