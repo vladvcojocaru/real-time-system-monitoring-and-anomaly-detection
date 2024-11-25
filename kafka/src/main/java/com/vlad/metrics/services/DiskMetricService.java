@@ -19,6 +19,7 @@ public class DiskMetricService {
         List<HWDiskStore> diskStores = systemInfo.getHardware().getDiskStores();
 
         for(HWDiskStore disk: diskStores){
+            disk.updateAttributes();
             String diskName = disk.getName();
             long diskReads = disk.getReads();
             long diskWrites = disk.getWrites();
