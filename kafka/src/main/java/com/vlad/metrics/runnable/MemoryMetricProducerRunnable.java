@@ -24,6 +24,9 @@ public class MemoryMetricProducerRunnable implements Runnable{
 
                 Thread.sleep(1000);
             }
+        } catch (InterruptedException e){
+            // Handle interruptions to the main thread (e.g., during shutdown).
+            System.err.println("Producer interrupted: " + e.getMessage());
         }
     }
 }
