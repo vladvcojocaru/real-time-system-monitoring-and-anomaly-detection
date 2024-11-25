@@ -8,7 +8,7 @@ import oshi.hardware.CentralProcessor;
  * Service class to collect CPU usage metrics using OSHI (Operating System and Hardware Information).
  * Provides both total CPU usage and per-core usage metrics.
  */
-public class CpuMetricsService {
+public class CpuMetricService {
     // Represents the CPU processor object, used to gather metrics.
     private final CentralProcessor processor;
 
@@ -22,7 +22,7 @@ public class CpuMetricsService {
      * Constructor initializes the processor and captures the initial tick values.
      * These initial ticks are used as the baseline for subsequent CPU load calculations.
      */
-    public CpuMetricsService() {
+    public CpuMetricService() {
         // Retrieve the processor object from OSHI.
         this.processor = new SystemInfo().getHardware().getProcessor();
 

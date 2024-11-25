@@ -2,10 +2,9 @@ package com.vlad.metrics;
 
 import com.vlad.metrics.kafka.CpuMetricProducer;
 import com.vlad.metrics.kafka.OsMetricProducer;
-import com.vlad.metrics.models.CpuMetric;
 import com.vlad.metrics.runnable.CpuMetricProducerRunnable;
 import com.vlad.metrics.runnable.OsMetricProducerRunnable;
-import com.vlad.metrics.services.CpuMetricsService;
+import com.vlad.metrics.services.CpuMetricService;
 import com.vlad.metrics.services.OsMetricService;
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class MainProducer {
         // runStartupScript();
 
         // Initialize Services for collecting OSHI metrics
-        CpuMetricsService cpuMetricsService = new CpuMetricsService();
+        CpuMetricService cpuMetricService = new CpuMetricService();
         OsMetricService osMetricService = new OsMetricService();
 
         // Initialize Producers to send metrics to Kafka
@@ -40,7 +39,7 @@ public class MainProducer {
         OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
 
         // Create Runnable threads for each producer
-        Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(cpuMetricsService, cpuMetricProducer);
+        Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(cpuMetricService, cpuMetricProducer);
         Runnable osMetricProducerRunnable = new OsMetricProducerRunnable(osMetricService, osMetricProducer);
 
         // Start the producer threads

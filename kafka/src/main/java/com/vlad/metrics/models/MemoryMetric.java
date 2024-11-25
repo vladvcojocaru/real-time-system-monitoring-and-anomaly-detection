@@ -4,18 +4,16 @@ import com.google.gson.Gson;
 
 public class MemoryMetric {
     long totalPhysicalMemory;
-    long availablePhysicalMemory;
+    long usedPhysicalMemory;
     long totalSwapMemory;
     long usedSwapMemory;
-    long freeSwapMemory;
     long virtualMemoryUsed;
 
-    public MemoryMetric(long totalPhysicalMemory, long availablePhysicalMemory, long totalSwapMemory, long usedSwapMemory, long freeSwapMemory, long virtualMemoryUsed) {
+    public MemoryMetric(long totalPhysicalMemory, long usedPhysicalMemory, long totalSwapMemory, long usedSwapMemory, long virtualMemoryUsed) {
         this.totalPhysicalMemory = totalPhysicalMemory;
-        this.availablePhysicalMemory = availablePhysicalMemory;
+        this.usedPhysicalMemory = usedPhysicalMemory;
         this.totalSwapMemory = totalSwapMemory;
         this.usedSwapMemory = usedSwapMemory;
-        this.freeSwapMemory = freeSwapMemory;
         this.virtualMemoryUsed = virtualMemoryUsed;
     }
 
@@ -23,8 +21,8 @@ public class MemoryMetric {
         return totalPhysicalMemory;
     }
 
-    public long getAvailablePhysicalMemory() {
-        return availablePhysicalMemory;
+    public long getUsedPhysicalMemory() {
+        return usedPhysicalMemory;
     }
 
     public long getTotalSwapMemory() {
@@ -35,26 +33,22 @@ public class MemoryMetric {
         return usedSwapMemory;
     }
 
-    public long getFreeSwapMemory() {
-        return freeSwapMemory;
-    }
-
     public long getVirtualMemoryUsed() {
         return virtualMemoryUsed;
     }
 
     public String toJson(){
-        return new Gson().toJson(new MemoryMetric(totalPhysicalMemory, availablePhysicalMemory, totalSwapMemory, usedSwapMemory, freeSwapMemory, virtualMemoryUsed));
+        return new Gson().toJson(new MemoryMetric(totalPhysicalMemory, usedPhysicalMemory, totalSwapMemory, usedSwapMemory, virtualMemoryUsed));
     }
+
 
     @Override
     public String toString() {
         return "MemoryMetric{" +
                 "totalPhysicalMemory=" + totalPhysicalMemory +
-                ", availablePhysicalMemory=" + availablePhysicalMemory +
+                ", usedPhysicalMemory=" + usedPhysicalMemory +
                 ", totalSwapMemory=" + totalSwapMemory +
                 ", usedSwapMemory=" + usedSwapMemory +
-                ", freeSwapMemory=" + freeSwapMemory +
                 ", virtualMemoryUsed=" + virtualMemoryUsed +
                 '}';
     }

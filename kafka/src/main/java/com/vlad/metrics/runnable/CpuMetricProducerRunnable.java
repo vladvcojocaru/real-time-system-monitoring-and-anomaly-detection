@@ -2,14 +2,14 @@ package com.vlad.metrics.runnable;
 
 import com.vlad.metrics.kafka.CpuMetricProducer;
 import com.vlad.metrics.models.CpuMetric;
-import com.vlad.metrics.services.CpuMetricsService;
+import com.vlad.metrics.services.CpuMetricService;
 
 public class CpuMetricProducerRunnable implements Runnable{
-    private final CpuMetricsService cpuMetricsService;
+    private final CpuMetricService cpuMetricService;
     private final CpuMetricProducer cpuMetricProducer;
 
-    public CpuMetricProducerRunnable(CpuMetricsService cpuMetricsService, CpuMetricProducer cpuMetricProducer) {
-        this.cpuMetricsService = cpuMetricsService;
+    public CpuMetricProducerRunnable(CpuMetricService cpuMetricService, CpuMetricProducer cpuMetricProducer) {
+        this.cpuMetricService = cpuMetricService;
         this.cpuMetricProducer = cpuMetricProducer;
     }
 
@@ -19,7 +19,7 @@ public class CpuMetricProducerRunnable implements Runnable{
             // Continuous loop to collect and send CPU metrics at regular intervals.
             while (true) {
                 // Fetch the current CPU metrics (total load and per-core loads).
-                CpuMetric cpuMetric = cpuMetricsService.getCpuMetrics();
+                CpuMetric cpuMetric = cpuMetricService.getCpuMetrics();
 
                 // Send the collected CPU metrics to Kafka.
                 cpuMetricProducer.sendMetric(cpuMetric);
