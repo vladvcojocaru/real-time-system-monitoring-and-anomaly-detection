@@ -6,13 +6,17 @@ public class DiskMetric {
     String diskName;
     long diskReads;
     long diskWrites;
+    long diskReadBytes;
+    long diskWriteBytes;
     long diskQueueLength;
     long diskTransferTime;
 
-    public DiskMetric(String diskName, long diskReads, long diskWrites, long diskQueueLength, long diskTransferTime) {
+    public DiskMetric(String diskName, long diskReads, long diskWrites, long diskReadBytes, long diskWriteBytes, long diskQueueLength, long diskTransferTime) {
         this.diskName = diskName;
         this.diskReads = diskReads;
         this.diskWrites = diskWrites;
+        this.diskReadBytes = diskReadBytes;
+        this.diskWriteBytes = diskWriteBytes;
         this.diskQueueLength = diskQueueLength;
         this.diskTransferTime = diskTransferTime;
     }
@@ -37,9 +41,18 @@ public class DiskMetric {
         return diskTransferTime;
     }
 
-    public String toJson(){
-        return new Gson().toJson(new DiskMetric(diskName, diskReads, diskWrites, diskQueueLength, diskTransferTime));
+    public long getDiskReadBytes() {
+        return diskReadBytes;
     }
+
+    public long getDiskWriteBytes() {
+        return diskWriteBytes;
+    }
+
+    public String toJson(){
+        return new Gson().toJson(new DiskMetric(diskName, diskReads, diskWrites, diskReadBytes, diskWriteBytes, diskQueueLength, diskTransferTime));
+    }
+
 
     @Override
     public String toString() {
@@ -47,6 +60,8 @@ public class DiskMetric {
                 "diskName='" + diskName + '\'' +
                 ", diskReads=" + diskReads +
                 ", diskWrites=" + diskWrites +
+                ", diskReadBytes=" + diskReadBytes +
+                ", diskWriteBytes=" + diskWriteBytes +
                 ", diskQueueLength=" + diskQueueLength +
                 ", diskTransferTime=" + diskTransferTime +
                 '}';
