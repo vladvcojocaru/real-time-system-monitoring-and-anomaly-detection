@@ -1,10 +1,13 @@
 package com.vlad.metrics;
 
 import com.vlad.metrics.kafka.CpuMetricProducer;
+import com.vlad.metrics.kafka.MemoryMetricProducer;
 import com.vlad.metrics.kafka.OsMetricProducer;
 import com.vlad.metrics.runnable.CpuMetricProducerRunnable;
+import com.vlad.metrics.runnable.MemoryMetricProducerRunnable;
 import com.vlad.metrics.runnable.OsMetricProducerRunnable;
 import com.vlad.metrics.services.CpuMetricService;
+import com.vlad.metrics.services.MemoryMetricService;
 import com.vlad.metrics.services.OsMetricService;
 
 import java.io.IOException;
@@ -33,21 +36,26 @@ public class MainProducer {
         // Initialize Services for collecting OSHI metrics
         CpuMetricService cpuMetricService = new CpuMetricService();
         OsMetricService osMetricService = new OsMetricService();
+        MemoryMetricService memoryMetricService = new MemoryMetricService();
 
         // Initialize Producers to send metrics to Kafka
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer("cpu-metrics");
         OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
+        MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer("memory-metrics");
 
         // Create Runnable threads for each producer
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(cpuMetricService, cpuMetricProducer);
         Runnable osMetricProducerRunnable = new OsMetricProducerRunnable(osMetricService, osMetricProducer);
+        Runnable memoryMetricProducerRunnable = new MemoryMetricProducerRunnable(memoryMetricService, memoryMetricProducer);
 
         // Start the producer threads
         Thread cpuMetricProducerThread = new Thread(cpuMetricProducerRunnable);
         Thread osMetricProducerThread = new Thread(osMetricProducerRunnable);
+        Thread memoryMetricProducerThread = new Thread(memoryMetricProducerRunnable);
 
         cpuMetricProducerThread.start();
         osMetricProducerThread.start();
+        memoryMetricProducerThread.start();
 
         // Add a shutdown hook to gracefully close the Kafka producer on application exit.
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -59,6 +67,7 @@ public class MainProducer {
             // Main thread can be used for other tasks or simply to wait until shutdown
             cpuMetricProducerThread.join();
             osMetricProducerThread.join();
+            memoryMetricProducerThread.join();
         } catch (InterruptedException e) {
             System.err.println("Main thread interrupted: " + e.getMessage());
         }

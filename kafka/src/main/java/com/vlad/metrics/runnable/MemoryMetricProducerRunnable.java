@@ -5,12 +5,12 @@ import com.vlad.metrics.models.MemoryMetric;
 import com.vlad.metrics.services.MemoryMetricService;
 
 public class MemoryMetricProducerRunnable implements Runnable{
-    private final MemoryMetricProducer memoryMetricProducer;
     private final MemoryMetricService memoryMetricService;
+    private final MemoryMetricProducer memoryMetricProducer;
 
-    public MemoryMetricProducerRunnable(MemoryMetricProducer memoryMetricProducer, MemoryMetricService memoryMetricService) {
-        this.memoryMetricProducer = memoryMetricProducer;
+    public MemoryMetricProducerRunnable(MemoryMetricService memoryMetricService,  MemoryMetricProducer memoryMetricProducer) {
         this.memoryMetricService = memoryMetricService;
+        this.memoryMetricProducer = memoryMetricProducer;
     }
 
 
