@@ -9,6 +9,8 @@ public class DiskMetricProducer extends MetricProducer<DiskMetric>{
 
     @Override
     protected String serializeMetric(DiskMetric metric) {
-        return metric.toJson(); // Convert OsMetric to JSON
+        return metric.toJson();
     }
+
+
 }

@@ -51,6 +51,12 @@ public abstract class MetricProducer<T> {
         });
     }
 
+    public void sendMetrics(T[] metrics) {
+        for (T metric : metrics) {
+            sendMetric(metric); // Use the existing single-metric method
+        }
+    }
+
     /**
      * Closes the Kafka producer to release resources.
      */

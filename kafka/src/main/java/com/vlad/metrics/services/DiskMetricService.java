@@ -14,7 +14,7 @@ public class DiskMetricService {
         systemInfo = new SystemInfo();
     }
 
-    public DiskMetric[] getDisksMetric(){
+    public DiskMetric[] getDiskMetric(){
         ArrayList<DiskMetric> diskMetricList = new ArrayList<>();
         List<HWDiskStore> diskStores = systemInfo.getHardware().getDiskStores();
 
