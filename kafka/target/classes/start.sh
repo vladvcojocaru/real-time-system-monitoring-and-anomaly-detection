@@ -102,4 +102,17 @@ else
   log "Topic 'disk-metrics' created successfully."
 fi
 
+# Ensure the network-metrics topic exists
+log "Ensuring topic 'network-metrics' exists..."
+if topic_exists "network-metrics"; then
+  log "Topic 'network-metrics' already exists, skipping creation."
+else
+  kafka-topics.sh --bootstrap-server localhost:9092 \
+    --create \
+    --topic network-metrics \
+    --partitions 3 \
+    --replication-factor 1
+  log "Topic 'network-metrics' created successfully."
+fi
+
 log "Script completed successfully."
