@@ -1,17 +1,8 @@
 package com.vlad.metrics;
 
-import com.vlad.metrics.kafka.CpuMetricProducer;
-import com.vlad.metrics.kafka.DiskMetricProducer;
-import com.vlad.metrics.kafka.MemoryMetricProducer;
-import com.vlad.metrics.kafka.OsMetricProducer;
-import com.vlad.metrics.runnable.CpuMetricProducerRunnable;
-import com.vlad.metrics.runnable.DiskMetricProducerRunnable;
-import com.vlad.metrics.runnable.MemoryMetricProducerRunnable;
-import com.vlad.metrics.runnable.OsMetricProducerRunnable;
-import com.vlad.metrics.services.CpuMetricService;
-import com.vlad.metrics.services.DiskMetricService;
-import com.vlad.metrics.services.MemoryMetricService;
-import com.vlad.metrics.services.OsMetricService;
+import com.vlad.metrics.kafka.*;
+import com.vlad.metrics.runnable.*;
+import com.vlad.metrics.services.*;
 
 import java.io.IOException;
 
@@ -35,29 +26,34 @@ public class MainProducer {
         OsMetricService osMetricService = new OsMetricService();
         MemoryMetricService memoryMetricService = new MemoryMetricService();
         DiskMetricService diskMetricService = new DiskMetricService();
+        NetworkMetricService networkMetricService = new NetworkMetricService();
 
         // Initialize Producers to send metrics to Kafka
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer("cpu-metrics");
         OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
         MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer("memory-metrics");
         DiskMetricProducer diskMetricProducer = new DiskMetricProducer("disk-metrics");
+        NetworkMetricProducer networkMetricProducer = new NetworkMetricProducer("network-metrics");
 
         // Create Runnable threads for each producer
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(cpuMetricService, cpuMetricProducer);
         Runnable osMetricProducerRunnable = new OsMetricProducerRunnable(osMetricService, osMetricProducer);
         Runnable memoryMetricProducerRunnable = new MemoryMetricProducerRunnable(memoryMetricService, memoryMetricProducer);
         Runnable diskMetricProducerRunnable = new DiskMetricProducerRunnable(diskMetricService, diskMetricProducer);
+        Runnable networkMetricProducerRunnable = new NetworkMetricProducerRunnable(networkMetricService, networkMetricProducer);
 
         // Start the producer threads
         Thread cpuMetricProducerThread = new Thread(cpuMetricProducerRunnable);
         Thread osMetricProducerThread = new Thread(osMetricProducerRunnable);
         Thread memoryMetricProducerThread = new Thread(memoryMetricProducerRunnable);
         Thread diskMetricProducerThread = new Thread(diskMetricProducerRunnable);
+        Thread networkMetricProducerThread = new Thread(networkMetricProducerRunnable);
 
         cpuMetricProducerThread.start();
         osMetricProducerThread.start();
         memoryMetricProducerThread.start();
         diskMetricProducerThread.start();
+        networkMetricProducerThread.start();
 
         // Add a shutdown hook to gracefully close the Kafka producer on application exit.
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -71,6 +67,7 @@ public class MainProducer {
             osMetricProducerThread.join();
             memoryMetricProducerThread.join();
             diskMetricProducerThread.join();
+            networkMetricProducerThread.join();
         } catch (InterruptedException e) {
             System.err.println("Main thread interrupted: " + e.getMessage());
         }
