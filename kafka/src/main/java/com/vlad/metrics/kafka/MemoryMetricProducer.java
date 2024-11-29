@@ -1,9 +1,9 @@
 package com.vlad.metrics.kafka;
 
 import com.vlad.metrics.models.MemoryMetric;
-import com.vlad.metrics.models.OsMetric;
 
-public class MemoryMetricProducer extends MetricProducer<MemoryMetric>{
+public class MemoryMetricProducer extends MetricProducer<MemoryMetric> {
+
     public MemoryMetricProducer(String topic) {
         super(topic);
     }
