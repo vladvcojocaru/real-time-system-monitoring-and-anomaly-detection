@@ -46,6 +46,7 @@ public class MainProducer {
             osMetricService,
             osMetricProducer
         );
+
         Runnable memoryMetricProducerRunnable =
             new MemoryMetricProducerRunnable(
                 memoryMetricService,
@@ -84,6 +85,11 @@ public class MainProducer {
                 new Thread(() -> {
                     System.out.println("Shutting down...");
                     cpuMetricProducer.close();
+                    cpuMetricProducer.close();
+                    osMetricProducer.close();
+                    memoryMetricProducer.close();
+                    diskMetricProducer.close();
+                    networkMetricProducer.close();
                 })
             );
 
