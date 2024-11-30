@@ -11,7 +11,7 @@ public class SensorMetricService {
         systemInfo = new SystemInfo();
     }
 
-    public SensorMetric getSensorMetrics(){
+    public SensorMetric getSensorMetric(){
         Sensors sensors = systemInfo.getHardware().getSensors();
 
         double cpuTemperature = sensors.getCpuTemperature();
