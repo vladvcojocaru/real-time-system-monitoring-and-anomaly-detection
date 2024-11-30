@@ -9,7 +9,8 @@ public class SensorMetricProducerRunnable implements Runnable {
     private final SensorMetricService sensorMetricService;
     private final SensorMetricProducer sensorMetricProducer;
 
-    public SensorMetricProducerRunnable(SensorMetricService sensorMetricService, SensorMetricProducer sensorMetricProducer) {
+    public SensorMetricProducerRunnable(SensorMetricService sensorMetricService,
+            SensorMetricProducer sensorMetricProducer) {
         this.sensorMetricService = sensorMetricService;
         this.sensorMetricProducer = sensorMetricProducer;
     }
@@ -17,14 +18,14 @@ public class SensorMetricProducerRunnable implements Runnable {
     @Override
     public void run() {
         try {
-            while (true){
+            while (true) {
                 SensorMetric sensorMetric = sensorMetricService.getSensorMetric();
 
                 sensorMetricProducer.sendMetric(sensorMetric);
 
                 Thread.sleep(1000);
             }
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             System.err.println("Producer interrupted: " + e.getMessage());
         }
     }

@@ -7,11 +7,11 @@ import oshi.hardware.Sensors;
 public class SensorMetricService {
     private SystemInfo systemInfo;
 
-    public SensorMetricService(){
+    public SensorMetricService() {
         systemInfo = new SystemInfo();
     }
 
-    public SensorMetric getSensorMetric(){
+    public SensorMetric getSensorMetric() {
         Sensors sensors = systemInfo.getHardware().getSensors();
 
         double cpuTemperature = sensors.getCpuTemperature();
