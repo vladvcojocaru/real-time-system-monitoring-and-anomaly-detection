@@ -1,6 +1,7 @@
 package com.vlad.metrics;
 
 import com.vlad.metrics.kafka.*;
+import com.vlad.metrics.models.SensorMetric;
 import com.vlad.metrics.runnable.*;
 import com.vlad.metrics.services.*;
 
@@ -23,11 +24,14 @@ public class MainProducer {
         MemoryMetricService memoryMetricService = new MemoryMetricService();
         DiskMetricService diskMetricService = new DiskMetricService();
         NetworkMetricService networkMetricService = new NetworkMetricService();
+        SensorMetricService sensorMetricService = new SensorMetricService();
 
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(
             "cpu-metrics"
         );
-        OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
+        OsMetricProducer osMetricProducer = new OsMetricProducer(
+                "os-metrics"
+        );
         MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer(
             "memory-metrics"
         );
@@ -36,6 +40,9 @@ public class MainProducer {
         );
         NetworkMetricProducer networkMetricProducer = new NetworkMetricProducer(
             "network-metrics"
+        );
+        SensorMetricProducer sensorMetricProducer = new SensorMetricProducer(
+                "sensor-metrics"
         );
 
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(
@@ -61,6 +68,7 @@ public class MainProducer {
                 networkMetricService,
                 networkMetricProducer
             );
+        Runnable sensorMetricProducerRunnable = new SensorMetricProducerRunnable(sensorMetricService, sensorMetricProducer);
 
         Thread cpuMetricProducerThread = new Thread(cpuMetricProducerRunnable);
         Thread osMetricProducerThread = new Thread(osMetricProducerRunnable);
@@ -73,12 +81,14 @@ public class MainProducer {
         Thread networkMetricProducerThread = new Thread(
             networkMetricProducerRunnable
         );
+        Thread sensorMetricProducerThread = new Thread(sensorMetricProducerRunnable);
 
         cpuMetricProducerThread.start();
         osMetricProducerThread.start();
         memoryMetricProducerThread.start();
         diskMetricProducerThread.start();
         networkMetricProducerThread.start();
+        sensorMetricProducerThread.start();
 
         Runtime.getRuntime()
             .addShutdownHook(
@@ -90,6 +100,7 @@ public class MainProducer {
                     memoryMetricProducer.close();
                     diskMetricProducer.close();
                     networkMetricProducer.close();
+                    sensorMetricProducer.close();
                 })
             );
 
@@ -99,6 +110,7 @@ public class MainProducer {
             memoryMetricProducerThread.join();
             diskMetricProducerThread.join();
             networkMetricProducerThread.join();
+            sensorMetricProducerThread.join();
         } catch (InterruptedException e) {
             System.err.println("Main thread interrupted: " + e.getMessage());
         }
