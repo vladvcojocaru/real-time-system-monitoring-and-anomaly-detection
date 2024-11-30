@@ -6,6 +6,8 @@ import java.util.Arrays;
 
 public class SensorMetric {
     double cpuTemperature;
+    // TODO: Make it work or delete this shit (fan speed is very machine dependent e.g on laptops you get it by BIOS and on pc (idk maybe) you get it via motherboard)
+
     int[] fanSpeeds;
     double cpuVoltage;
 

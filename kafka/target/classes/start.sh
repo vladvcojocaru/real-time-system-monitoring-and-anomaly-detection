@@ -115,4 +115,15 @@ else
   log "Topic 'network-metrics' created successfully."
 fi
 
+log "Ensuring topic 'sensor-metrics' exists..."
+if topic_exists "sensor-metrics"; then
+  log "Topic 'sensor-metrics' already exists, skipping creation."
+else
+  kafka-topics.sh --bootstrap-server localhost:9092 \
+    --create \
+    --topic sensor-metrics \
+    --partitions 3 \
+    --replication-factor 1
+  log "Topic 'sensor-metrics' created successfully."
+fi
 log "Script completed successfully."
