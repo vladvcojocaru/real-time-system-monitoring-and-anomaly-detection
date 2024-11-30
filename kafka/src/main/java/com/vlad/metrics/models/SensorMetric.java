@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 public class SensorMetric {
     double cpuTemperature;
-    double[] fanSpeeds;
+    int[] fanSpeeds;
     double cpuVoltage;
 
-    public SensorMetric(double cpuTemperature, double[] fanSpeeds, double cpuVoltage) {
+    public SensorMetric(double cpuTemperature, int[] fanSpeeds, double cpuVoltage) {
         this.cpuTemperature = cpuTemperature;
         this.fanSpeeds = fanSpeeds;
         this.cpuVoltage = cpuVoltage;
@@ -19,7 +19,7 @@ public class SensorMetric {
         return cpuTemperature;
     }
 
-    public double[] getFanSpeeds() {
+    public int[] getFanSpeeds() {
         return fanSpeeds;
     }
 
