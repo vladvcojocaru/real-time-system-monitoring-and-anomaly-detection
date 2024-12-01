@@ -25,47 +25,67 @@ public class MainProducer {
         NetworkMetricService networkMetricService = new NetworkMetricService();
         SensorMetricService sensorMetricService = new SensorMetricService();
 
+        // TODO: Combine protobuf with json for efficency
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(
-                "cpu-metrics");
-        OsMetricProducer osMetricProducer = new OsMetricProducer(
-                "os-metrics");
+            "cpu-metrics"
+        );
+        OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
         MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer(
-                "memory-metrics");
+            "memory-metrics"
+        );
         DiskMetricProducer diskMetricProducer = new DiskMetricProducer(
-                "disk-metrics");
+            "disk-metrics"
+        );
         NetworkMetricProducer networkMetricProducer = new NetworkMetricProducer(
-                "network-metrics");
+            "network-metrics"
+        );
         SensorMetricProducer sensorMetricProducer = new SensorMetricProducer(
-                "sensor-metrics");
+            "sensor-metrics"
+        );
 
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(
-                cpuMetricService,
-                cpuMetricProducer);
+            cpuMetricService,
+            cpuMetricProducer
+        );
         Runnable osMetricProducerRunnable = new OsMetricProducerRunnable(
-                osMetricService,
-                osMetricProducer);
+            osMetricService,
+            osMetricProducer
+        );
 
-        Runnable memoryMetricProducerRunnable = new MemoryMetricProducerRunnable(
+        Runnable memoryMetricProducerRunnable =
+            new MemoryMetricProducerRunnable(
                 memoryMetricService,
-                memoryMetricProducer);
+                memoryMetricProducer
+            );
         Runnable diskMetricProducerRunnable = new DiskMetricProducerRunnable(
-                diskMetricService,
-                diskMetricProducer);
-        Runnable networkMetricProducerRunnable = new NetworkMetricProducerRunnable(
+            diskMetricService,
+            diskMetricProducer
+        );
+        Runnable networkMetricProducerRunnable =
+            new NetworkMetricProducerRunnable(
                 networkMetricService,
-                networkMetricProducer);
-        Runnable sensorMetricProducerRunnable = new SensorMetricProducerRunnable(sensorMetricService,
-                sensorMetricProducer);
+                networkMetricProducer
+            );
+        Runnable sensorMetricProducerRunnable =
+            new SensorMetricProducerRunnable(
+                sensorMetricService,
+                sensorMetricProducer
+            );
 
         Thread cpuMetricProducerThread = new Thread(cpuMetricProducerRunnable);
         Thread osMetricProducerThread = new Thread(osMetricProducerRunnable);
         Thread memoryMetricProducerThread = new Thread(
-                memoryMetricProducerRunnable);
+            memoryMetricProducerRunnable
+        );
         Thread diskMetricProducerThread = new Thread(
-                diskMetricProducerRunnable);
+            diskMetricProducerRunnable
+        );
         Thread networkMetricProducerThread = new Thread(
-                networkMetricProducerRunnable);
-        Thread sensorMetricProducerThread = new Thread(sensorMetricProducerRunnable);
+            networkMetricProducerRunnable
+        );
+        Thread sensorMetricProducerThread = new Thread(
+            sensorMetricProducerRunnable
+        );
 
         cpuMetricProducerThread.start();
         osMetricProducerThread.start();
@@ -75,17 +95,18 @@ public class MainProducer {
         sensorMetricProducerThread.start();
 
         Runtime.getRuntime()
-                .addShutdownHook(
-                        new Thread(() -> {
-                            System.out.println("Shutting down...");
-                            cpuMetricProducer.close();
-                            cpuMetricProducer.close();
-                            osMetricProducer.close();
-                            memoryMetricProducer.close();
-                            diskMetricProducer.close();
-                            networkMetricProducer.close();
-                            sensorMetricProducer.close();
-                        }));
+            .addShutdownHook(
+                new Thread(() -> {
+                    System.out.println("Shutting down...");
+                    cpuMetricProducer.close();
+                    cpuMetricProducer.close();
+                    osMetricProducer.close();
+                    memoryMetricProducer.close();
+                    diskMetricProducer.close();
+                    networkMetricProducer.close();
+                    sensorMetricProducer.close();
+                })
+            );
 
         try {
             cpuMetricProducerThread.join();
