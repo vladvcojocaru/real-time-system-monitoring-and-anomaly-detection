@@ -1,19 +1,20 @@
 package com.vlad.metrics;
 
+import java.util.List;
 import oshi.SystemInfo;
-import oshi.hardware.HardwareAbstractionLayer;
 import oshi.hardware.NetworkIF;
 
-import java.util.List;
-
 public class Testing {
+
     public static void main(String[] args) {
         // Initialize OSHI SystemInfo
         SystemInfo systemInfo = new SystemInfo();
 
         // Monitor network metrics in a loop
         while (true) {
-            List<NetworkIF> networkIFs = systemInfo.getHardware().getNetworkIFs();
+            List<NetworkIF> networkIFs = systemInfo
+                .getHardware()
+                .getNetworkIFs();
             System.out.println("===== Network Metrics =====");
 
             for (NetworkIF net : networkIFs) {
@@ -33,16 +34,25 @@ public class Testing {
                 String macAddress = net.getMacaddr();
 
                 // Display metrics
-                System.out.println("Interface: " + name + " (" + displayName + ")");
+                System.out.println(
+                    "Interface: " + name + " (" + displayName + ")"
+                );
                 // System.out.println("  Status: " + (isUp ? "Up" : "Down"));
                 System.out.println("  MAC Address: " + macAddress);
-                System.out.println("  IPv4 Addresses: " + String.join(", ", ipv4Addresses));
-                System.out.println("  IPv6 Addresses: " + String.join(", ", ipv6Addresses));
+                System.out.println(
+                    "  IPv4 Addresses: " + String.join(", ", ipv4Addresses)
+                );
+                System.out.println(
+                    "  IPv6 Addresses: " + String.join(", ", ipv6Addresses)
+                );
                 System.out.println("  Bytes Sent: " + bytesSent);
                 System.out.println("  Bytes Received: " + bytesRecv);
                 System.out.println("  Packets Sent: " + packetsSent);
                 System.out.println("  Packets Received: " + packetsRecv);
-                System.out.println("  Speed: " + (speed > 0 ? speed / 1_000_000 + " Mbps" : "Unknown"));
+                System.out.println(
+                    "  Speed: " +
+                    (speed > 0 ? speed / 1_000_000 + " Mbps" : "Unknown")
+                );
 
                 System.out.println("-------------------------------------");
             }
