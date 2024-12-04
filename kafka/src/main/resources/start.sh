@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+
+# TODO: Check logs dir permissions
+
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 # Log helper function
@@ -16,7 +19,11 @@ log "Ensuring required directories exist..."
 mkdir -p "$LOG_DIR"
 mkdir -p "$METADATA_DIR"
 
-# No need to set permissions, as the home directory is owned by the current user.
+if [ ! -f "$METADATA_DIR/meta.properties" ]; then
+  log "Initializing metadata directory..."
+  kafka-storage.sh format -t $(uuidgen) -c server.properties
+fi
+
 
 # Start the Kafka server
 log "Starting Kafka server..."

@@ -1,4 +1,4 @@
-package com.vlad.metrics.models;
+package com.vlad.metrics.producer.models;
 
 import com.google.gson.Gson;
 
