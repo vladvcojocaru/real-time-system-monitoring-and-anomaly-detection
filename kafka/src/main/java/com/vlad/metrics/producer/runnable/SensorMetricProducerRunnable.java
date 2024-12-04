@@ -1,8 +1,8 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
-import com.vlad.metrics.kafka.SensorMetricProducer;
+import com.vlad.metrics.producer.kafka.SensorMetricProducer;
 import com.vlad.metrics.models.SensorMetric;
-import com.vlad.metrics.services.SensorMetricService;
+import com.vlad.metrics.producer.services.SensorMetricService;
 
 public class SensorMetricProducerRunnable implements Runnable {
 

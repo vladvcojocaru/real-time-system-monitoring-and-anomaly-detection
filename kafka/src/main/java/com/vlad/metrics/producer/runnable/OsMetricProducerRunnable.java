@@ -1,9 +1,9 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
 
-import com.vlad.metrics.kafka.OsMetricProducer;
+import com.vlad.metrics.producer.kafka.OsMetricProducer;
 import com.vlad.metrics.models.OsMetric;
-import com.vlad.metrics.services.OsMetricService;
+import com.vlad.metrics.producer.services.OsMetricService;
 
 public class OsMetricProducerRunnable implements Runnable{
     private final OsMetricService osMetricService;

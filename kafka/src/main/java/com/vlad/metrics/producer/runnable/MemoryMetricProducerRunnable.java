@@ -1,8 +1,8 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
-import com.vlad.metrics.kafka.MemoryMetricProducer;
+import com.vlad.metrics.producer.kafka.MemoryMetricProducer;
 import com.vlad.metrics.models.MemoryMetric;
-import com.vlad.metrics.services.MemoryMetricService;
+import com.vlad.metrics.producer.services.MemoryMetricService;
 
 public class MemoryMetricProducerRunnable implements Runnable{
     private final MemoryMetricService memoryMetricService;

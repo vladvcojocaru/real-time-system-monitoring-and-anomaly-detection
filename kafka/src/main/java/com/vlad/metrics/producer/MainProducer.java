@@ -1,8 +1,8 @@
-package com.vlad.metrics;
+package com.vlad.metrics.producer;
 
-import com.vlad.metrics.kafka.*;
-import com.vlad.metrics.runnable.*;
-import com.vlad.metrics.services.*;
+import com.vlad.metrics.producer.kafka.*;
+import com.vlad.metrics.producer.runnable.*;
+import com.vlad.metrics.producer.services.*;
 
 /**
  * Main entry point for the application that produces CPU metrics to Kafka.

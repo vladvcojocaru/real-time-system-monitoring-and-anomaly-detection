@@ -1,8 +1,8 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
-import com.vlad.metrics.kafka.NetworkMetricProducer;
+import com.vlad.metrics.producer.kafka.NetworkMetricProducer;
 import com.vlad.metrics.models.NetworkMetric;
-import com.vlad.metrics.services.NetworkMetricService;
+import com.vlad.metrics.producer.services.NetworkMetricService;
 
 public class NetworkMetricProducerRunnable implements Runnable {
 

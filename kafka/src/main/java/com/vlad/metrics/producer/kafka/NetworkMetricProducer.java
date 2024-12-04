@@ -1,4 +1,4 @@
-package com.vlad.metrics.kafka;
+package com.vlad.metrics.producer.kafka;
 
 import com.vlad.metrics.models.NetworkMetric;
 

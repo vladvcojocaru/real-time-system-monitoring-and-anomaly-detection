@@ -1,4 +1,4 @@
-package com.vlad.metrics.kafka;
+package com.vlad.metrics.producer.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

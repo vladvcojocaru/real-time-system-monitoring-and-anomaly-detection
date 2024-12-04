@@ -1,4 +1,4 @@
-package com.vlad.metrics.services;
+package com.vlad.metrics.producer.services;
 
 import com.vlad.metrics.models.OsMetric;
 import oshi.SystemInfo;

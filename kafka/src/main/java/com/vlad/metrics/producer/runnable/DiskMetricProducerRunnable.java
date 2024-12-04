@@ -1,8 +1,8 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
-import com.vlad.metrics.kafka.DiskMetricProducer;
+import com.vlad.metrics.producer.kafka.DiskMetricProducer;
 import com.vlad.metrics.models.DiskMetric;
-import com.vlad.metrics.services.DiskMetricService;
+import com.vlad.metrics.producer.services.DiskMetricService;
 
 public class DiskMetricProducerRunnable implements Runnable {
 

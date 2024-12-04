@@ -1,8 +1,8 @@
-package com.vlad.metrics.runnable;
+package com.vlad.metrics.producer.runnable;
 
-import com.vlad.metrics.kafka.CpuMetricProducer;
+import com.vlad.metrics.producer.kafka.CpuMetricProducer;
 import com.vlad.metrics.models.CpuMetric;
-import com.vlad.metrics.services.CpuMetricService;
+import com.vlad.metrics.producer.services.CpuMetricService;
 
 public class CpuMetricProducerRunnable implements Runnable{
     private final CpuMetricService cpuMetricService;

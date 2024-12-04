@@ -1,6 +1,5 @@
-package com.vlad.metrics.kafka;
+package com.vlad.metrics.producer.kafka;
 
-import com.vlad.metrics.models.OsMetric;
 import com.vlad.metrics.models.SensorMetric;
 
 public class SensorMetricProducer extends MetricProducer<SensorMetric> {
