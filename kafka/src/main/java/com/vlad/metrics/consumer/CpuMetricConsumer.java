@@ -5,9 +5,7 @@ import com.vlad.metrics.consumer.kafka.KafkaConsumerConfig;
 import com.vlad.metrics.models.CpuMetric;
 import com.vlad.metrics.util.Constants;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.Properties;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+import java.util.Arrays;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -39,19 +37,19 @@ public class CpuMetricConsumer {
         // DONE //
 
         KafkaConsumer<String, String> consumer =
-            KafkaConsumerConfig.createConsumer("group1");
+            KafkaConsumerConfig.createConsumer(
+                Constants.METRICS_CONSUMER_GROUP
+            );
 
-        consumer.subscribe(Collections.singleton(Constants.CPU_METRICS_TOPIC));
-        consumer.subscribe(Collections.singleton(Constants.DISK_METRICS_TOPIC));
         consumer.subscribe(
-            Collections.singleton(Constants.MEMORY_METRICS_TOPIC)
-        );
-        consumer.subscribe(
-            Collections.singleton(Constants.NETWORK_METRICS_TOPIC)
-        );
-        consumer.subscribe(Collections.singleton(Constants.OS_METRICS_TOPIC));
-        consumer.subscribe(
-            Collections.singleton(Constants.SENSOR_METRICS_TOPIC)
+            Arrays.asList(
+                Constants.CPU_METRICS_TOPIC,
+                Constants.DISK_METRICS_TOPIC,
+                Constants.MEMORY_METRICS_TOPIC,
+                Constants.NETWORK_METRICS_TOPIC,
+                Constants.OS_METRICS_TOPIC,
+                Constants.SENSOR_METRICS_TOPIC
+            )
         );
         Gson gson = new Gson();
 
@@ -64,14 +62,14 @@ public class CpuMetricConsumer {
                 );
 
                 for (ConsumerRecord<String, String> record : records) {
-                    CpuMetric cpuMetric = gson.fromJson(
+                    CpuMetric metric = gson.fromJson(
                         record.value(),
                         CpuMetric.class
                     );
-                    System.out.println("Consumed Metric: " + cpuMetric);
+                    System.out.println("Consumed Metric: " + metric);
 
                     // Example: Forward to redis, db, process further the data etc.
-                    processMetric(cpuMetric);
+                    processMetric(metric);
                 }
             }
         } finally {
