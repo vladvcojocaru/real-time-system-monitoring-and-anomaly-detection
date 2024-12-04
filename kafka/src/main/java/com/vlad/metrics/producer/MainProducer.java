@@ -3,6 +3,7 @@ package com.vlad.metrics.producer;
 import com.vlad.metrics.producer.kafka.*;
 import com.vlad.metrics.producer.runnable.*;
 import com.vlad.metrics.producer.services.*;
+import com.vlad.metrics.util.Constants;
 
 /**
  * Main entry point for the application that produces CPU metrics to Kafka.
@@ -27,20 +28,22 @@ public class MainProducer {
 
         // TODO: Combine protobuf with json for efficency
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(
-            "cpu-metrics"
+            Constants.CPU_METRICS_TOPIC
         );
-        OsMetricProducer osMetricProducer = new OsMetricProducer("os-metrics");
+        OsMetricProducer osMetricProducer = new OsMetricProducer(
+            Constants.OS_METRICS_TOPIC
+        );
         MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer(
-            "memory-metrics"
+            Constants.MEMORY_METRICS_TOPIC
         );
         DiskMetricProducer diskMetricProducer = new DiskMetricProducer(
-            "disk-metrics"
+            Constants.DISK_METRICS_TOPIC
         );
         NetworkMetricProducer networkMetricProducer = new NetworkMetricProducer(
-            "network-metrics"
+            Constants.NETWORK_METRICS_TOPIC
         );
         SensorMetricProducer sensorMetricProducer = new SensorMetricProducer(
-            "sensor-metrics"
+            Constants.SENSOR_METRICS_TOPIC
         );
 
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(
