@@ -18,6 +18,9 @@ METADATA_DIR="$HOME_DIR/kraft-metadata"
 log "Ensuring required directories exist..."
 mkdir -p "$LOG_DIR"
 mkdir -p "$METADATA_DIR"
+export LOG_DIR="$HOME/kafka-data/logs"
+export KAFKA_OPTS="-Xlog:gc*:file=$LOG_DIR/kafkaServer-gc.log:time,tags:filecount=10,filesize=100M"
+
 
 if [ ! -f "$METADATA_DIR/meta.properties" ]; then
   log "Initializing metadata directory..."

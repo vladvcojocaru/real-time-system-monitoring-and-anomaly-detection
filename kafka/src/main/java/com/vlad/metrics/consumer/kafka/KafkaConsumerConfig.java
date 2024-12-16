@@ -24,7 +24,7 @@ public class KafkaConsumerConfig {
         );
         properties.setProperty(
             ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,
-            "earliest"
+            "latest"
         );
 
         // Return a new KafkaProducer instance with the above properties

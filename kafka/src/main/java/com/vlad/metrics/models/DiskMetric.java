@@ -3,15 +3,24 @@ package com.vlad.metrics.models;
 import com.google.gson.Gson;
 
 public class DiskMetric {
-    String diskName;
-    long diskReads;
-    long diskWrites;
-    long diskReadBytes;
-    long diskWriteBytes;
-    long diskQueueLength;
-    long diskTransferTime;
 
-    public DiskMetric(String diskName, long diskReads, long diskWrites, long diskReadBytes, long diskWriteBytes, long diskQueueLength, long diskTransferTime) {
+    private String diskName;
+    private long diskReads;
+    private long diskWrites;
+    private long diskReadBytes;
+    private long diskWriteBytes;
+    private long diskQueueLength;
+    private long diskTransferTime;
+
+    public DiskMetric(
+        String diskName,
+        long diskReads,
+        long diskWrites,
+        long diskReadBytes,
+        long diskWriteBytes,
+        long diskQueueLength,
+        long diskTransferTime
+    ) {
         this.diskName = diskName;
         this.diskReads = diskReads;
         this.diskWrites = diskWrites;
@@ -49,21 +58,41 @@ public class DiskMetric {
         return diskWriteBytes;
     }
 
-    public String toJson(){
-        return new Gson().toJson(new DiskMetric(diskName, diskReads, diskWrites, diskReadBytes, diskWriteBytes, diskQueueLength, diskTransferTime));
+    public String toJson() {
+        return new Gson()
+            .toJson(
+                new DiskMetric(
+                    diskName,
+                    diskReads,
+                    diskWrites,
+                    diskReadBytes,
+                    diskWriteBytes,
+                    diskQueueLength,
+                    diskTransferTime
+                )
+            );
     }
-
 
     @Override
     public String toString() {
-        return "DiskMetric{" +
-                "diskName='" + diskName + '\'' +
-                ", diskReads=" + diskReads +
-                ", diskWrites=" + diskWrites +
-                ", diskReadBytes=" + diskReadBytes +
-                ", diskWriteBytes=" + diskWriteBytes +
-                ", diskQueueLength=" + diskQueueLength +
-                ", diskTransferTime=" + diskTransferTime +
-                '}';
+        return (
+            "DiskMetric{" +
+            "diskName='" +
+            diskName +
+            '\'' +
+            ", diskReads=" +
+            diskReads +
+            ", diskWrites=" +
+            diskWrites +
+            ", diskReadBytes=" +
+            diskReadBytes +
+            ", diskWriteBytes=" +
+            diskWriteBytes +
+            ", diskQueueLength=" +
+            diskQueueLength +
+            ", diskTransferTime=" +
+            diskTransferTime +
+            '}'
+        );
     }
 }

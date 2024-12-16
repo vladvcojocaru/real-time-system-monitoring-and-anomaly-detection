@@ -3,13 +3,20 @@ package com.vlad.metrics.models;
 import com.google.gson.Gson;
 
 public class MemoryMetric {
-    long totalPhysicalMemory;
-    long usedPhysicalMemory;
-    long totalSwapMemory;
-    long usedSwapMemory;
-    long virtualMemoryUsed;
 
-    public MemoryMetric(long totalPhysicalMemory, long usedPhysicalMemory, long totalSwapMemory, long usedSwapMemory, long virtualMemoryUsed) {
+    private long totalPhysicalMemory;
+    private long usedPhysicalMemory;
+    private long totalSwapMemory;
+    private long usedSwapMemory;
+    private long virtualMemoryUsed;
+
+    public MemoryMetric(
+        long totalPhysicalMemory,
+        long usedPhysicalMemory,
+        long totalSwapMemory,
+        long usedSwapMemory,
+        long virtualMemoryUsed
+    ) {
         this.totalPhysicalMemory = totalPhysicalMemory;
         this.usedPhysicalMemory = usedPhysicalMemory;
         this.totalSwapMemory = totalSwapMemory;
@@ -37,19 +44,34 @@ public class MemoryMetric {
         return virtualMemoryUsed;
     }
 
-    public String toJson(){
-        return new Gson().toJson(new MemoryMetric(totalPhysicalMemory, usedPhysicalMemory, totalSwapMemory, usedSwapMemory, virtualMemoryUsed));
+    public String toJson() {
+        return new Gson()
+            .toJson(
+                new MemoryMetric(
+                    totalPhysicalMemory,
+                    usedPhysicalMemory,
+                    totalSwapMemory,
+                    usedSwapMemory,
+                    virtualMemoryUsed
+                )
+            );
     }
-
 
     @Override
     public String toString() {
-        return "MemoryMetric{" +
-                "totalPhysicalMemory=" + totalPhysicalMemory +
-                ", usedPhysicalMemory=" + usedPhysicalMemory +
-                ", totalSwapMemory=" + totalSwapMemory +
-                ", usedSwapMemory=" + usedSwapMemory +
-                ", virtualMemoryUsed=" + virtualMemoryUsed +
-                '}';
+        return (
+            "MemoryMetric{" +
+            "totalPhysicalMemory=" +
+            totalPhysicalMemory +
+            ", usedPhysicalMemory=" +
+            usedPhysicalMemory +
+            ", totalSwapMemory=" +
+            totalSwapMemory +
+            ", usedSwapMemory=" +
+            usedSwapMemory +
+            ", virtualMemoryUsed=" +
+            virtualMemoryUsed +
+            '}'
+        );
     }
 }

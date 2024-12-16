@@ -59,7 +59,7 @@ public class CpuMetricConsumer {
         try {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(
-                    Duration.ofMillis(100)
+                    Duration.ofMillis(1000)
                 );
 
                 for (ConsumerRecord<String, String> record : records) {
@@ -70,7 +70,7 @@ public class CpuMetricConsumer {
                     System.out.println("Consumed Metric: " + metric);
 
                     // Example: Forward to redis, db, process further the data etc.
-                    processMetric(metric);
+                    //processMetric(metric);
                 }
             }
         } finally {
