@@ -9,7 +9,7 @@ public class MemoryMetricProducer extends MetricProducer<MemoryMetric> {
     }
 
     @Override
-    protected String serializeMetric(MemoryMetric metric) {
-        return metric.toJson(); // Convert OsMetric to JSON
+    protected byte[] serializeMetric(MemoryMetric metric) {
+        return metric.toByteArray(); // Convert OsMetric to JSON
     }
 }

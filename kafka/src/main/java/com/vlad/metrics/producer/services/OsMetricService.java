@@ -17,6 +17,11 @@ public class OsMetricService {
         int processes = operatingSystem.getProcessCount();
         int threads = operatingSystem.getThreadCount();
 
-        return new OsMetric(os_name, uptime, processes, threads);
+        return OsMetric.newBuilder()
+                .setOsName(os_name)
+                .setUptime(uptime)
+                .setProcesses(processes)
+                .setThreads(threads)
+                .build();
     }
 }

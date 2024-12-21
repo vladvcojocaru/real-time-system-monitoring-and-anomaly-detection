@@ -3,7 +3,7 @@
 // source: metrics.proto
 // Protobuf Java Version: 4.28.3
 
-package com.vlad.metrics.models;
+package metrics;
 
 /**
  * Protobuf type {@code com.vlad.metrics.models.NetworkMetric}
@@ -29,24 +29,22 @@ private static final long serialVersionUID = 0L;
   private NetworkMetric() {
     name_ = "";
     displayName_ = "";
-    ipv4Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    ipv6Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    ipv4Addresses_ = "";
+    ipv6Addresses_ = "";
     macAddress_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Metrics.internal_static_metrics_NetworkMetric_descriptor;
+    return metrics.Metrics.internal_static_metrics_NetworkMetric_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Metrics.internal_static_metrics_NetworkMetric_fieldAccessorTable
+    return metrics.Metrics.internal_static_metrics_NetworkMetric_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            NetworkMetric.class, NetworkMetric.Builder.class);
+            metrics.NetworkMetric.class, metrics.NetworkMetric.Builder.class);
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
@@ -173,76 +171,80 @@ private static final long serialVersionUID = 0L;
 
   public static final int IPV4ADDRESSES_FIELD_NUMBER = 7;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList ipv4Addresses_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private volatile java.lang.Object ipv4Addresses_ = "";
   /**
-   * <code>repeated string ipv4Addresses = 7;</code>
-   * @return A list containing the ipv4Addresses.
+   * <code>string ipv4Addresses = 7;</code>
+   * @return The ipv4Addresses.
    */
-  public com.google.protobuf.ProtocolStringList
-      getIpv4AddressesList() {
-    return ipv4Addresses_;
+  @java.lang.Override
+  public java.lang.String getIpv4Addresses() {
+    java.lang.Object ref = ipv4Addresses_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      ipv4Addresses_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated string ipv4Addresses = 7;</code>
-   * @return The count of ipv4Addresses.
+   * <code>string ipv4Addresses = 7;</code>
+   * @return The bytes for ipv4Addresses.
    */
-  public int getIpv4AddressesCount() {
-    return ipv4Addresses_.size();
-  }
-  /**
-   * <code>repeated string ipv4Addresses = 7;</code>
-   * @param index The index of the element to return.
-   * @return The ipv4Addresses at the given index.
-   */
-  public java.lang.String getIpv4Addresses(int index) {
-    return ipv4Addresses_.get(index);
-  }
-  /**
-   * <code>repeated string ipv4Addresses = 7;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the ipv4Addresses at the given index.
-   */
+  @java.lang.Override
   public com.google.protobuf.ByteString
-      getIpv4AddressesBytes(int index) {
-    return ipv4Addresses_.getByteString(index);
+      getIpv4AddressesBytes() {
+    java.lang.Object ref = ipv4Addresses_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      ipv4Addresses_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int IPV6ADDRESSES_FIELD_NUMBER = 8;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList ipv6Addresses_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private volatile java.lang.Object ipv6Addresses_ = "";
   /**
-   * <code>repeated string ipv6Addresses = 8;</code>
-   * @return A list containing the ipv6Addresses.
+   * <code>string ipv6Addresses = 8;</code>
+   * @return The ipv6Addresses.
    */
-  public com.google.protobuf.ProtocolStringList
-      getIpv6AddressesList() {
-    return ipv6Addresses_;
+  @java.lang.Override
+  public java.lang.String getIpv6Addresses() {
+    java.lang.Object ref = ipv6Addresses_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      ipv6Addresses_ = s;
+      return s;
+    }
   }
   /**
-   * <code>repeated string ipv6Addresses = 8;</code>
-   * @return The count of ipv6Addresses.
+   * <code>string ipv6Addresses = 8;</code>
+   * @return The bytes for ipv6Addresses.
    */
-  public int getIpv6AddressesCount() {
-    return ipv6Addresses_.size();
-  }
-  /**
-   * <code>repeated string ipv6Addresses = 8;</code>
-   * @param index The index of the element to return.
-   * @return The ipv6Addresses at the given index.
-   */
-  public java.lang.String getIpv6Addresses(int index) {
-    return ipv6Addresses_.get(index);
-  }
-  /**
-   * <code>repeated string ipv6Addresses = 8;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the ipv6Addresses at the given index.
-   */
+  @java.lang.Override
   public com.google.protobuf.ByteString
-      getIpv6AddressesBytes(int index) {
-    return ipv6Addresses_.getByteString(index);
+      getIpv6AddressesBytes() {
+    java.lang.Object ref = ipv6Addresses_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      ipv6Addresses_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int MACADDRESS_FIELD_NUMBER = 9;
@@ -316,11 +318,11 @@ private static final long serialVersionUID = 0L;
     if (packetsRecv_ != 0L) {
       output.writeInt64(6, packetsRecv_);
     }
-    for (int i = 0; i < ipv4Addresses_.size(); i++) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 7, ipv4Addresses_.getRaw(i));
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(ipv4Addresses_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 7, ipv4Addresses_);
     }
-    for (int i = 0; i < ipv6Addresses_.size(); i++) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 8, ipv6Addresses_.getRaw(i));
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(ipv6Addresses_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 8, ipv6Addresses_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(macAddress_)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 9, macAddress_);
@@ -356,21 +358,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, packetsRecv_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < ipv4Addresses_.size(); i++) {
-        dataSize += computeStringSizeNoTag(ipv4Addresses_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getIpv4AddressesList().size();
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(ipv4Addresses_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(7, ipv4Addresses_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < ipv6Addresses_.size(); i++) {
-        dataSize += computeStringSizeNoTag(ipv6Addresses_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getIpv6AddressesList().size();
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(ipv6Addresses_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(8, ipv6Addresses_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(macAddress_)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(9, macAddress_);
@@ -385,10 +377,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof NetworkMetric)) {
+    if (!(obj instanceof metrics.NetworkMetric)) {
       return super.equals(obj);
     }
-    NetworkMetric other = (NetworkMetric) obj;
+    metrics.NetworkMetric other = (metrics.NetworkMetric) obj;
 
     if (!getName()
         .equals(other.getName())) return false;
@@ -402,10 +394,10 @@ private static final long serialVersionUID = 0L;
         != other.getPacketsSent()) return false;
     if (getPacketsRecv()
         != other.getPacketsRecv()) return false;
-    if (!getIpv4AddressesList()
-        .equals(other.getIpv4AddressesList())) return false;
-    if (!getIpv6AddressesList()
-        .equals(other.getIpv6AddressesList())) return false;
+    if (!getIpv4Addresses()
+        .equals(other.getIpv4Addresses())) return false;
+    if (!getIpv6Addresses()
+        .equals(other.getIpv6Addresses())) return false;
     if (!getMacAddress()
         .equals(other.getMacAddress())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -435,14 +427,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + PACKETSRECV_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPacketsRecv());
-    if (getIpv4AddressesCount() > 0) {
-      hash = (37 * hash) + IPV4ADDRESSES_FIELD_NUMBER;
-      hash = (53 * hash) + getIpv4AddressesList().hashCode();
-    }
-    if (getIpv6AddressesCount() > 0) {
-      hash = (37 * hash) + IPV6ADDRESSES_FIELD_NUMBER;
-      hash = (53 * hash) + getIpv6AddressesList().hashCode();
-    }
+    hash = (37 * hash) + IPV4ADDRESSES_FIELD_NUMBER;
+    hash = (53 * hash) + getIpv4Addresses().hashCode();
+    hash = (37 * hash) + IPV6ADDRESSES_FIELD_NUMBER;
+    hash = (53 * hash) + getIpv6Addresses().hashCode();
     hash = (37 * hash) + MACADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getMacAddress().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -450,44 +438,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static NetworkMetric parseFrom(byte[] data)
+  public static metrics.NetworkMetric parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static NetworkMetric parseFrom(java.io.InputStream input)
+  public static metrics.NetworkMetric parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -495,26 +483,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static NetworkMetric parseDelimitedFrom(java.io.InputStream input)
+  public static metrics.NetworkMetric parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static NetworkMetric parseDelimitedFrom(
+  public static metrics.NetworkMetric parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static NetworkMetric parseFrom(
+  public static metrics.NetworkMetric parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -527,7 +515,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(NetworkMetric prototype) {
+  public static Builder newBuilder(metrics.NetworkMetric prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -548,18 +536,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.vlad.metrics.models.NetworkMetric)
-          NetworkMetricOrBuilder {
+      metrics.NetworkMetricOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Metrics.internal_static_metrics_NetworkMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_NetworkMetric_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Metrics.internal_static_metrics_NetworkMetric_fieldAccessorTable
+      return metrics.Metrics.internal_static_metrics_NetworkMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              NetworkMetric.class, NetworkMetric.Builder.class);
+              metrics.NetworkMetric.class, metrics.NetworkMetric.Builder.class);
     }
 
     // Construct using com.vlad.metrics.models.NetworkMetric.newBuilder()
@@ -582,10 +570,8 @@ private static final long serialVersionUID = 0L;
       bytesRecv_ = 0L;
       packetsSent_ = 0L;
       packetsRecv_ = 0L;
-      ipv4Addresses_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      ipv6Addresses_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      ipv4Addresses_ = "";
+      ipv6Addresses_ = "";
       macAddress_ = "";
       return this;
     }
@@ -593,17 +579,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Metrics.internal_static_metrics_NetworkMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_NetworkMetric_descriptor;
     }
 
     @java.lang.Override
-    public NetworkMetric getDefaultInstanceForType() {
-      return NetworkMetric.getDefaultInstance();
+    public metrics.NetworkMetric getDefaultInstanceForType() {
+      return metrics.NetworkMetric.getDefaultInstance();
     }
 
     @java.lang.Override
-    public NetworkMetric build() {
-      NetworkMetric result = buildPartial();
+    public metrics.NetworkMetric build() {
+      metrics.NetworkMetric result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -611,14 +597,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public NetworkMetric buildPartial() {
-      NetworkMetric result = new NetworkMetric(this);
+    public metrics.NetworkMetric buildPartial() {
+      metrics.NetworkMetric result = new metrics.NetworkMetric(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(NetworkMetric result) {
+    private void buildPartial0(metrics.NetworkMetric result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.name_ = name_;
@@ -639,11 +625,9 @@ private static final long serialVersionUID = 0L;
         result.packetsRecv_ = packetsRecv_;
       }
       if (((from_bitField0_ & 0x00000040) != 0)) {
-        ipv4Addresses_.makeImmutable();
         result.ipv4Addresses_ = ipv4Addresses_;
       }
       if (((from_bitField0_ & 0x00000080) != 0)) {
-        ipv6Addresses_.makeImmutable();
         result.ipv6Addresses_ = ipv6Addresses_;
       }
       if (((from_bitField0_ & 0x00000100) != 0)) {
@@ -653,16 +637,16 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof NetworkMetric) {
-        return mergeFrom((NetworkMetric)other);
+      if (other instanceof metrics.NetworkMetric) {
+        return mergeFrom((metrics.NetworkMetric)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(NetworkMetric other) {
-      if (other == NetworkMetric.getDefaultInstance()) return this;
+    public Builder mergeFrom(metrics.NetworkMetric other) {
+      if (other == metrics.NetworkMetric.getDefaultInstance()) return this;
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         bitField0_ |= 0x00000001;
@@ -685,24 +669,14 @@ private static final long serialVersionUID = 0L;
       if (other.getPacketsRecv() != 0L) {
         setPacketsRecv(other.getPacketsRecv());
       }
-      if (!other.ipv4Addresses_.isEmpty()) {
-        if (ipv4Addresses_.isEmpty()) {
-          ipv4Addresses_ = other.ipv4Addresses_;
-          bitField0_ |= 0x00000040;
-        } else {
-          ensureIpv4AddressesIsMutable();
-          ipv4Addresses_.addAll(other.ipv4Addresses_);
-        }
+      if (!other.getIpv4Addresses().isEmpty()) {
+        ipv4Addresses_ = other.ipv4Addresses_;
+        bitField0_ |= 0x00000040;
         onChanged();
       }
-      if (!other.ipv6Addresses_.isEmpty()) {
-        if (ipv6Addresses_.isEmpty()) {
-          ipv6Addresses_ = other.ipv6Addresses_;
-          bitField0_ |= 0x00000080;
-        } else {
-          ensureIpv6AddressesIsMutable();
-          ipv6Addresses_.addAll(other.ipv6Addresses_);
-        }
+      if (!other.getIpv6Addresses().isEmpty()) {
+        ipv6Addresses_ = other.ipv6Addresses_;
+        bitField0_ |= 0x00000080;
         onChanged();
       }
       if (!other.getMacAddress().isEmpty()) {
@@ -767,15 +741,13 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 48
             case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-              ensureIpv4AddressesIsMutable();
-              ipv4Addresses_.add(s);
+              ipv4Addresses_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000040;
               break;
             } // case 58
             case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-              ensureIpv6AddressesIsMutable();
-              ipv6Addresses_.add(s);
+              ipv6Addresses_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000080;
               break;
             } // case 66
             case 74: {
@@ -1072,223 +1044,145 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList ipv4Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    private void ensureIpv4AddressesIsMutable() {
-      if (!ipv4Addresses_.isModifiable()) {
-        ipv4Addresses_ = new com.google.protobuf.LazyStringArrayList(ipv4Addresses_);
+    private java.lang.Object ipv4Addresses_ = "";
+    /**
+     * <code>string ipv4Addresses = 7;</code>
+     * @return The ipv4Addresses.
+     */
+    public java.lang.String getIpv4Addresses() {
+      java.lang.Object ref = ipv4Addresses_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ipv4Addresses_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
       }
-      bitField0_ |= 0x00000040;
     }
     /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @return A list containing the ipv4Addresses.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getIpv4AddressesList() {
-      ipv4Addresses_.makeImmutable();
-      return ipv4Addresses_;
-    }
-    /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @return The count of ipv4Addresses.
-     */
-    public int getIpv4AddressesCount() {
-      return ipv4Addresses_.size();
-    }
-    /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param index The index of the element to return.
-     * @return The ipv4Addresses at the given index.
-     */
-    public java.lang.String getIpv4Addresses(int index) {
-      return ipv4Addresses_.get(index);
-    }
-    /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the ipv4Addresses at the given index.
+     * <code>string ipv4Addresses = 7;</code>
+     * @return The bytes for ipv4Addresses.
      */
     public com.google.protobuf.ByteString
-        getIpv4AddressesBytes(int index) {
-      return ipv4Addresses_.getByteString(index);
+        getIpv4AddressesBytes() {
+      java.lang.Object ref = ipv4Addresses_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ipv4Addresses_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param index The index to set the value at.
+     * <code>string ipv4Addresses = 7;</code>
      * @param value The ipv4Addresses to set.
      * @return This builder for chaining.
      */
     public Builder setIpv4Addresses(
-        int index, java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureIpv4AddressesIsMutable();
-      ipv4Addresses_.set(index, value);
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param value The ipv4Addresses to add.
-     * @return This builder for chaining.
-     */
-    public Builder addIpv4Addresses(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureIpv4AddressesIsMutable();
-      ipv4Addresses_.add(value);
+      ipv4Addresses_ = value;
       bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
     /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param values The ipv4Addresses to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllIpv4Addresses(
-        java.lang.Iterable<java.lang.String> values) {
-      ensureIpv4AddressesIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, ipv4Addresses_);
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string ipv4Addresses = 7;</code>
+     * <code>string ipv4Addresses = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearIpv4Addresses() {
-      ipv4Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000040);;
+      ipv4Addresses_ = getDefaultInstance().getIpv4Addresses();
+      bitField0_ = (bitField0_ & ~0x00000040);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated string ipv4Addresses = 7;</code>
-     * @param value The bytes of the ipv4Addresses to add.
+     * <code>string ipv4Addresses = 7;</code>
+     * @param value The bytes for ipv4Addresses to set.
      * @return This builder for chaining.
      */
-    public Builder addIpv4AddressesBytes(
+    public Builder setIpv4AddressesBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      ensureIpv4AddressesIsMutable();
-      ipv4Addresses_.add(value);
+      ipv4Addresses_ = value;
       bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList ipv6Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    private void ensureIpv6AddressesIsMutable() {
-      if (!ipv6Addresses_.isModifiable()) {
-        ipv6Addresses_ = new com.google.protobuf.LazyStringArrayList(ipv6Addresses_);
+    private java.lang.Object ipv6Addresses_ = "";
+    /**
+     * <code>string ipv6Addresses = 8;</code>
+     * @return The ipv6Addresses.
+     */
+    public java.lang.String getIpv6Addresses() {
+      java.lang.Object ref = ipv6Addresses_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ipv6Addresses_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
       }
-      bitField0_ |= 0x00000080;
     }
     /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @return A list containing the ipv6Addresses.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getIpv6AddressesList() {
-      ipv6Addresses_.makeImmutable();
-      return ipv6Addresses_;
-    }
-    /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @return The count of ipv6Addresses.
-     */
-    public int getIpv6AddressesCount() {
-      return ipv6Addresses_.size();
-    }
-    /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param index The index of the element to return.
-     * @return The ipv6Addresses at the given index.
-     */
-    public java.lang.String getIpv6Addresses(int index) {
-      return ipv6Addresses_.get(index);
-    }
-    /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the ipv6Addresses at the given index.
+     * <code>string ipv6Addresses = 8;</code>
+     * @return The bytes for ipv6Addresses.
      */
     public com.google.protobuf.ByteString
-        getIpv6AddressesBytes(int index) {
-      return ipv6Addresses_.getByteString(index);
+        getIpv6AddressesBytes() {
+      java.lang.Object ref = ipv6Addresses_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ipv6Addresses_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param index The index to set the value at.
+     * <code>string ipv6Addresses = 8;</code>
      * @param value The ipv6Addresses to set.
      * @return This builder for chaining.
      */
     public Builder setIpv6Addresses(
-        int index, java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureIpv6AddressesIsMutable();
-      ipv6Addresses_.set(index, value);
-      bitField0_ |= 0x00000080;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param value The ipv6Addresses to add.
-     * @return This builder for chaining.
-     */
-    public Builder addIpv6Addresses(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureIpv6AddressesIsMutable();
-      ipv6Addresses_.add(value);
+      ipv6Addresses_ = value;
       bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
     /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param values The ipv6Addresses to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllIpv6Addresses(
-        java.lang.Iterable<java.lang.String> values) {
-      ensureIpv6AddressesIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, ipv6Addresses_);
-      bitField0_ |= 0x00000080;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated string ipv6Addresses = 8;</code>
+     * <code>string ipv6Addresses = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearIpv6Addresses() {
-      ipv6Addresses_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000080);;
+      ipv6Addresses_ = getDefaultInstance().getIpv6Addresses();
+      bitField0_ = (bitField0_ & ~0x00000080);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated string ipv6Addresses = 8;</code>
-     * @param value The bytes of the ipv6Addresses to add.
+     * <code>string ipv6Addresses = 8;</code>
+     * @param value The bytes for ipv6Addresses to set.
      * @return This builder for chaining.
      */
-    public Builder addIpv6AddressesBytes(
+    public Builder setIpv6AddressesBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      ensureIpv6AddressesIsMutable();
-      ipv6Addresses_.add(value);
+      ipv6Addresses_ = value;
       bitField0_ |= 0x00000080;
       onChanged();
       return this;
@@ -1370,12 +1264,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:com.vlad.metrics.models.NetworkMetric)
-  private static final NetworkMetric DEFAULT_INSTANCE;
+  private static final metrics.NetworkMetric DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new NetworkMetric();
+    DEFAULT_INSTANCE = new metrics.NetworkMetric();
   }
 
-  public static NetworkMetric getDefaultInstance() {
+  public static metrics.NetworkMetric getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1411,7 +1305,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public NetworkMetric getDefaultInstanceForType() {
+  public metrics.NetworkMetric getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

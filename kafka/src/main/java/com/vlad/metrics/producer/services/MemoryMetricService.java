@@ -24,7 +24,12 @@ public class MemoryMetricService {
         // Virtual Memory (In Use)
         long virtualMemoryUsed = memory.getVirtualMemory().getVirtualInUse();
 
-        return new MemoryMetric(totalPhysicalMemory, usedPhysicalMemory, totalSwapMemory, usedSwapMemory, virtualMemoryUsed);
+        return MemoryMetric.newBuilder()
+                .setTotalPhysicalMemory(totalPhysicalMemory)
+                .setUsedPhysicalMemory(usedPhysicalMemory)
+                .setTotalSwapMemory(totalSwapMemory)
+                .setUsedSwapMemory(usedSwapMemory)
+                .build();
 
     }
 }

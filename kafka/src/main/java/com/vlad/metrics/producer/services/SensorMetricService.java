@@ -18,6 +18,10 @@ public class SensorMetricService {
         int[] fanSpeeds = sensors.getFanSpeeds();
         double cpuVoltage = sensors.getCpuVoltage();
 
-        return new SensorMetric(cpuTemperature, fanSpeeds, cpuVoltage);
+        return SensorMetric.newBuilder()
+                .setCpuTemperature(cpuTemperature)
+                //.addAllFanSpeeds(fanSpeeds)
+                .setCpuVoltage(cpuVoltage)
+                .build();
     }
 }

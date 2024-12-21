@@ -8,8 +8,8 @@ public class DiskMetricProducer extends MetricProducer<DiskMetric>{
     }
 
     @Override
-    protected String serializeMetric(DiskMetric metric) {
-        return metric.toJson();
+    protected byte[] serializeMetric(DiskMetric metric) {
+        return metric.toByteArray();
     }
 
 

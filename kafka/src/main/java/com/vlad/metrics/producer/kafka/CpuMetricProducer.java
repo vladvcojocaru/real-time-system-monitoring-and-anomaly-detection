@@ -9,7 +9,7 @@ public class CpuMetricProducer extends MetricProducer<CpuMetric>{
     }
 
     @Override
-    protected String serializeMetric(CpuMetric metric) {
-        return metric.toJson(); // Convert OsMetric to JSON
+    protected byte[] serializeMetric(CpuMetric metric) {
+        return metric.toByteArray();
     }
 }

@@ -1,5 +1,6 @@
 package com.vlad.metrics.producer.services;
 
+//import com.vlad.metrics.models.old_models.CpuMetric;
 import com.vlad.metrics.models.CpuMetric;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -9,35 +10,17 @@ import oshi.hardware.CentralProcessor;
  * Provides both total CPU usage and per-core usage metrics.
  */
 public class CpuMetricService {
-    // Represents the CPU processor object, used to gather metrics.
     private final CentralProcessor processor;
-
-    // Stores previous tick values for calculating total CPU usage over time.
     private long[] prevTicks;
-
-    // Stores previous tick values for calculating per-core CPU usage over time.
     private long[][] prevCoreTicks;
 
-    /**
-     * Constructor initializes the processor and captures the initial tick values.
-     * These initial ticks are used as the baseline for subsequent CPU load calculations.
-     */
     public CpuMetricService() {
-        // Retrieve the processor object from OSHI.
         this.processor = new SystemInfo().getHardware().getProcessor();
-
-        // Capture the initial ticks for total CPU and per-core usage.
         this.prevTicks = processor.getSystemCpuLoadTicks();
         this.prevCoreTicks = processor.getProcessorCpuLoadTicks();
     }
 
-    /**
-     * Collects current CPU metrics and calculates total and per-core CPU usage.
-     *
-     * @return A CpuMetric object containing the total CPU load and per-core loads.
-     */
     public CpuMetric getCpuMetrics() {
-        // Get the current tick values for the total CPU and individual cores.
         long[] ticks = processor.getSystemCpuLoadTicks();
         long[][] coreTicks = processor.getProcessorCpuLoadTicks();
 
@@ -50,18 +33,29 @@ public class CpuMetricService {
             coreLoads[i] = calculateCpuLoad(coreTicks[i], prevCoreTicks[i]);
         }
 
-        // Get the frequency
+        // Get the frequencies for each core
         long[] currentFrequencies = processor.getCurrentFreq();
-
-        // TODO: Check for null case
-
 
         // Update previous ticks with the current values for the next cycle.
         prevTicks = ticks;
         prevCoreTicks = coreTicks;
 
-        // Return the CPU metrics as a CpuMetric object.
-        return new CpuMetric(totalLoad, coreLoads, currentFrequencies);
+        // code for normal classes
+        // return new CpuMetric(totalLoad, coreLoads, currentFrequencies);
+
+        // code for protobuf shit
+        // Build the protobuf CpuMetric
+        CpuMetric.Builder builder = CpuMetric.newBuilder();
+
+        builder.setTotalLoad(totalLoad);
+        for(double coreLoad : coreLoads) {
+            builder.addCoreLoads(coreLoad);
+        }
+        for(long frequency : currentFrequencies) {
+            builder.addCoreLoads(frequency);
+        }
+        return builder.build();
+
     }
 
     /**

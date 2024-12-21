@@ -3,7 +3,7 @@
 // source: metrics.proto
 // Protobuf Java Version: 4.28.3
 
-package com.vlad.metrics.models;
+package metrics;
 
 /**
  * Protobuf type {@code com.vlad.metrics.models.CpuMetric}
@@ -33,15 +33,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Metrics.internal_static_metrics_CpuMetric_descriptor;
+    return metrics.Metrics.internal_static_metrics_CpuMetric_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Metrics.internal_static_metrics_CpuMetric_fieldAccessorTable
+    return metrics.Metrics.internal_static_metrics_CpuMetric_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            CpuMetric.class, CpuMetric.Builder.class);
+            metrics.CpuMetric.class, metrics.CpuMetric.Builder.class);
   }
 
   public static final int TOTALLOAD_FIELD_NUMBER = 1;
@@ -195,10 +195,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof CpuMetric)) {
+    if (!(obj instanceof metrics.CpuMetric)) {
       return super.equals(obj);
     }
-    CpuMetric other = (CpuMetric) obj;
+    metrics.CpuMetric other = (metrics.CpuMetric) obj;
 
     if (java.lang.Double.doubleToLongBits(getTotalLoad())
         != java.lang.Double.doubleToLongBits(
@@ -234,44 +234,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static CpuMetric parseFrom(byte[] data)
+  public static metrics.CpuMetric parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static CpuMetric parseFrom(java.io.InputStream input)
+  public static metrics.CpuMetric parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -279,26 +279,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static CpuMetric parseDelimitedFrom(java.io.InputStream input)
+  public static metrics.CpuMetric parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static CpuMetric parseDelimitedFrom(
+  public static metrics.CpuMetric parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static CpuMetric parseFrom(
+  public static metrics.CpuMetric parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -311,7 +311,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(CpuMetric prototype) {
+  public static Builder newBuilder(metrics.CpuMetric prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -332,18 +332,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.vlad.metrics.models.CpuMetric)
-          CpuMetricOrBuilder {
+      metrics.CpuMetricOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Metrics.internal_static_metrics_CpuMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_CpuMetric_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Metrics.internal_static_metrics_CpuMetric_fieldAccessorTable
+      return metrics.Metrics.internal_static_metrics_CpuMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              CpuMetric.class, CpuMetric.Builder.class);
+              metrics.CpuMetric.class, metrics.CpuMetric.Builder.class);
     }
 
     // Construct using com.vlad.metrics.models.CpuMetric.newBuilder()
@@ -369,17 +369,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Metrics.internal_static_metrics_CpuMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_CpuMetric_descriptor;
     }
 
     @java.lang.Override
-    public CpuMetric getDefaultInstanceForType() {
-      return CpuMetric.getDefaultInstance();
+    public metrics.CpuMetric getDefaultInstanceForType() {
+      return metrics.CpuMetric.getDefaultInstance();
     }
 
     @java.lang.Override
-    public CpuMetric build() {
-      CpuMetric result = buildPartial();
+    public metrics.CpuMetric build() {
+      metrics.CpuMetric result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -387,14 +387,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public CpuMetric buildPartial() {
-      CpuMetric result = new CpuMetric(this);
+    public metrics.CpuMetric buildPartial() {
+      metrics.CpuMetric result = new metrics.CpuMetric(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(CpuMetric result) {
+    private void buildPartial0(metrics.CpuMetric result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.totalLoad_ = totalLoad_;
@@ -411,16 +411,16 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof CpuMetric) {
-        return mergeFrom((CpuMetric)other);
+      if (other instanceof metrics.CpuMetric) {
+        return mergeFrom((metrics.CpuMetric)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(CpuMetric other) {
-      if (other == CpuMetric.getDefaultInstance()) return this;
+    public Builder mergeFrom(metrics.CpuMetric other) {
+      if (other == metrics.CpuMetric.getDefaultInstance()) return this;
       if (other.getTotalLoad() != 0D) {
         setTotalLoad(other.getTotalLoad());
       }
@@ -737,12 +737,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:com.vlad.metrics.models.CpuMetric)
-  private static final CpuMetric DEFAULT_INSTANCE;
+  private static final metrics.CpuMetric DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new CpuMetric();
+    DEFAULT_INSTANCE = new metrics.CpuMetric();
   }
 
-  public static CpuMetric getDefaultInstance() {
+  public static metrics.CpuMetric getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -778,7 +778,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public CpuMetric getDefaultInstanceForType() {
+  public metrics.CpuMetric getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

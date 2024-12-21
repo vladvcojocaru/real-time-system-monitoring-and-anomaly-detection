@@ -3,7 +3,7 @@
 // source: metrics.proto
 // Protobuf Java Version: 4.28.3
 
-package com.vlad.metrics.models;
+package metrics;
 
 /**
  * Protobuf type {@code com.vlad.metrics.models.DiskMetric}
@@ -32,15 +32,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Metrics.internal_static_metrics_DiskMetric_descriptor;
+    return metrics.Metrics.internal_static_metrics_DiskMetric_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Metrics.internal_static_metrics_DiskMetric_fieldAccessorTable
+    return metrics.Metrics.internal_static_metrics_DiskMetric_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            DiskMetric.class, DiskMetric.Builder.class);
+            metrics.DiskMetric.class, metrics.DiskMetric.Builder.class);
   }
 
   public static final int DISKNAME_FIELD_NUMBER = 1;
@@ -229,10 +229,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof DiskMetric)) {
+    if (!(obj instanceof metrics.DiskMetric)) {
       return super.equals(obj);
     }
-    DiskMetric other = (DiskMetric) obj;
+    metrics.DiskMetric other = (metrics.DiskMetric) obj;
 
     if (!getDiskName()
         .equals(other.getDiskName())) return false;
@@ -284,44 +284,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static DiskMetric parseFrom(byte[] data)
+  public static metrics.DiskMetric parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static DiskMetric parseFrom(java.io.InputStream input)
+  public static metrics.DiskMetric parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -329,26 +329,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static DiskMetric parseDelimitedFrom(java.io.InputStream input)
+  public static metrics.DiskMetric parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static DiskMetric parseDelimitedFrom(
+  public static metrics.DiskMetric parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static DiskMetric parseFrom(
+  public static metrics.DiskMetric parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -361,7 +361,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(DiskMetric prototype) {
+  public static Builder newBuilder(metrics.DiskMetric prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -382,18 +382,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.vlad.metrics.models.DiskMetric)
-          DiskMetricOrBuilder {
+      metrics.DiskMetricOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Metrics.internal_static_metrics_DiskMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_DiskMetric_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Metrics.internal_static_metrics_DiskMetric_fieldAccessorTable
+      return metrics.Metrics.internal_static_metrics_DiskMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              DiskMetric.class, DiskMetric.Builder.class);
+              metrics.DiskMetric.class, metrics.DiskMetric.Builder.class);
     }
 
     // Construct using com.vlad.metrics.models.DiskMetric.newBuilder()
@@ -423,17 +423,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Metrics.internal_static_metrics_DiskMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_DiskMetric_descriptor;
     }
 
     @java.lang.Override
-    public DiskMetric getDefaultInstanceForType() {
-      return DiskMetric.getDefaultInstance();
+    public metrics.DiskMetric getDefaultInstanceForType() {
+      return metrics.DiskMetric.getDefaultInstance();
     }
 
     @java.lang.Override
-    public DiskMetric build() {
-      DiskMetric result = buildPartial();
+    public metrics.DiskMetric build() {
+      metrics.DiskMetric result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -441,14 +441,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public DiskMetric buildPartial() {
-      DiskMetric result = new DiskMetric(this);
+    public metrics.DiskMetric buildPartial() {
+      metrics.DiskMetric result = new metrics.DiskMetric(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(DiskMetric result) {
+    private void buildPartial0(metrics.DiskMetric result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.diskName_ = diskName_;
@@ -475,16 +475,16 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof DiskMetric) {
-        return mergeFrom((DiskMetric)other);
+      if (other instanceof metrics.DiskMetric) {
+        return mergeFrom((metrics.DiskMetric)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(DiskMetric other) {
-      if (other == DiskMetric.getDefaultInstance()) return this;
+    public Builder mergeFrom(metrics.DiskMetric other) {
+      if (other == metrics.DiskMetric.getDefaultInstance()) return this;
       if (!other.getDiskName().isEmpty()) {
         diskName_ = other.diskName_;
         bitField0_ |= 0x00000001;
@@ -854,12 +854,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:com.vlad.metrics.models.DiskMetric)
-  private static final DiskMetric DEFAULT_INSTANCE;
+  private static final metrics.DiskMetric DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new DiskMetric();
+    DEFAULT_INSTANCE = new metrics.DiskMetric();
   }
 
-  public static DiskMetric getDefaultInstance() {
+  public static metrics.DiskMetric getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -895,7 +895,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public DiskMetric getDefaultInstanceForType() {
+  public metrics.DiskMetric getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

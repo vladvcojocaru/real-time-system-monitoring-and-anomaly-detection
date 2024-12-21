@@ -3,7 +3,7 @@
 // source: metrics.proto
 // Protobuf Java Version: 4.28.3
 
-package com.vlad.metrics.models;
+package metrics;
 
 /**
  * Protobuf type {@code com.vlad.metrics.models.MemoryMetric}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Metrics.internal_static_metrics_MemoryMetric_descriptor;
+    return metrics.Metrics.internal_static_metrics_MemoryMetric_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Metrics.internal_static_metrics_MemoryMetric_fieldAccessorTable
+    return metrics.Metrics.internal_static_metrics_MemoryMetric_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            MemoryMetric.class, MemoryMetric.Builder.class);
+            metrics.MemoryMetric.class, metrics.MemoryMetric.Builder.class);
   }
 
   public static final int TOTALPHYSICALMEMORY_FIELD_NUMBER = 1;
@@ -165,10 +165,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof MemoryMetric)) {
+    if (!(obj instanceof metrics.MemoryMetric)) {
       return super.equals(obj);
     }
-    MemoryMetric other = (MemoryMetric) obj;
+    metrics.MemoryMetric other = (metrics.MemoryMetric) obj;
 
     if (getTotalPhysicalMemory()
         != other.getTotalPhysicalMemory()) return false;
@@ -211,44 +211,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static MemoryMetric parseFrom(byte[] data)
+  public static metrics.MemoryMetric parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static MemoryMetric parseFrom(java.io.InputStream input)
+  public static metrics.MemoryMetric parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -256,26 +256,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static MemoryMetric parseDelimitedFrom(java.io.InputStream input)
+  public static metrics.MemoryMetric parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static MemoryMetric parseDelimitedFrom(
+  public static metrics.MemoryMetric parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static MemoryMetric parseFrom(
+  public static metrics.MemoryMetric parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -288,7 +288,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(MemoryMetric prototype) {
+  public static Builder newBuilder(metrics.MemoryMetric prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -309,18 +309,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.vlad.metrics.models.MemoryMetric)
-          MemoryMetricOrBuilder {
+      metrics.MemoryMetricOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Metrics.internal_static_metrics_MemoryMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_MemoryMetric_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Metrics.internal_static_metrics_MemoryMetric_fieldAccessorTable
+      return metrics.Metrics.internal_static_metrics_MemoryMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              MemoryMetric.class, MemoryMetric.Builder.class);
+              metrics.MemoryMetric.class, metrics.MemoryMetric.Builder.class);
     }
 
     // Construct using com.vlad.metrics.models.MemoryMetric.newBuilder()
@@ -348,17 +348,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Metrics.internal_static_metrics_MemoryMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_MemoryMetric_descriptor;
     }
 
     @java.lang.Override
-    public MemoryMetric getDefaultInstanceForType() {
-      return MemoryMetric.getDefaultInstance();
+    public metrics.MemoryMetric getDefaultInstanceForType() {
+      return metrics.MemoryMetric.getDefaultInstance();
     }
 
     @java.lang.Override
-    public MemoryMetric build() {
-      MemoryMetric result = buildPartial();
+    public metrics.MemoryMetric build() {
+      metrics.MemoryMetric result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -366,14 +366,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public MemoryMetric buildPartial() {
-      MemoryMetric result = new MemoryMetric(this);
+    public metrics.MemoryMetric buildPartial() {
+      metrics.MemoryMetric result = new metrics.MemoryMetric(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(MemoryMetric result) {
+    private void buildPartial0(metrics.MemoryMetric result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.totalPhysicalMemory_ = totalPhysicalMemory_;
@@ -394,16 +394,16 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof MemoryMetric) {
-        return mergeFrom((MemoryMetric)other);
+      if (other instanceof metrics.MemoryMetric) {
+        return mergeFrom((metrics.MemoryMetric)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(MemoryMetric other) {
-      if (other == MemoryMetric.getDefaultInstance()) return this;
+    public Builder mergeFrom(metrics.MemoryMetric other) {
+      if (other == metrics.MemoryMetric.getDefaultInstance()) return this;
       if (other.getTotalPhysicalMemory() != 0L) {
         setTotalPhysicalMemory(other.getTotalPhysicalMemory());
       }
@@ -651,12 +651,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:com.vlad.metrics.models.MemoryMetric)
-  private static final MemoryMetric DEFAULT_INSTANCE;
+  private static final metrics.MemoryMetric DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new MemoryMetric();
+    DEFAULT_INSTANCE = new metrics.MemoryMetric();
   }
 
-  public static MemoryMetric getDefaultInstance() {
+  public static metrics.MemoryMetric getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -692,7 +692,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public MemoryMetric getDefaultInstanceForType() {
+  public metrics.MemoryMetric getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

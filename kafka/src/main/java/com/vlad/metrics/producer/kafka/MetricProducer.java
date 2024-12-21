@@ -9,7 +9,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
  * @param <T> The type of metric to be sent (e.g., OsMetric, CpuMetric).
  */
 public abstract class MetricProducer<T> {
-    private final KafkaProducer<String, String> producer;
+    private final KafkaProducer<String, byte[]> producer;
     private final String topic;
 
     /**
@@ -29,7 +29,7 @@ public abstract class MetricProducer<T> {
      * @param metric The metric object to serialize.
      * @return The serialized JSON string.
      */
-    protected abstract String serializeMetric(T metric);
+    protected abstract byte[] serializeMetric(T metric);
 
     /**
      * Sends a metric to the configured Kafka topic.
@@ -37,9 +37,9 @@ public abstract class MetricProducer<T> {
      * @param metric The metric object to send.
      */
     public void sendMetric(T metric) {
-        String payload = serializeMetric(metric);
+        byte[] payload = serializeMetric(metric);
 
-        ProducerRecord<String, String> record = new ProducerRecord<>(topic, null, payload);
+        ProducerRecord<String, byte[]> record = new ProducerRecord<>(topic, null, payload);
 
         producer.send(record, (metadata, exception) -> {
             if (exception == null) {

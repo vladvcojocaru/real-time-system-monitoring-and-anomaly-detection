@@ -5,6 +5,7 @@ import oshi.SystemInfo;
 import oshi.hardware.NetworkIF;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NetworkMetricService {
@@ -31,7 +32,18 @@ public class NetworkMetricService {
             String[] ipv6Addresses = networkIF.getIPv6addr();
             String macAddress = networkIF.getMacaddr();
 
-            networkMetricArrayList.add(new NetworkMetric(name, displayName, bytesSent, bytesRecv, packetsSent, packetsRecv, ipv4Addresses, ipv6Addresses, macAddress));
+            NetworkMetric networkMetric = NetworkMetric.newBuilder()
+                            .setName(name)
+                    .setDisplayName(displayName)
+                    .setBytesSent(bytesSent)
+                    .setBytesRecv(bytesRecv)
+                    .setPacketsSent(packetsSent)
+                    .setPacketsRecv(packetsRecv)
+                    .addAllIpv4Addresses(Arrays.asList(ipv4Addresses))
+                    .addAllIpv6Addresses(Arrays.asList(ipv6Addresses))
+                    .setMacAddress(macAddress)
+                    .build();
+            networkMetricArrayList.add(networkMetric);
         }
 
         return networkMetricArrayList.toArray(new NetworkMetric[0]);

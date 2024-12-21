@@ -28,17 +28,16 @@ public class DiskMetricService {
             long diskQueueLength = disk.getCurrentQueueLength();
             long diskTransferTime = disk.getTransferTime();
 
-            diskMetricList.add(
-                new DiskMetric(
-                    diskName,
-                    diskReads,
-                    diskWrites,
-                    diskReadBytes,
-                    diskWriteBytes,
-                    diskQueueLength,
-                    diskTransferTime
-                )
-            );
+            DiskMetric diskMetric = DiskMetric.newBuilder()
+                    .setDiskName(diskName)
+                    .setDiskReads(diskReads)
+                    .setDiskWrites(diskWrites)
+                    .setDiskReadBytes(diskReadBytes)
+                    .setDiskWriteBytes(diskWriteBytes)
+                    .setDiskQueueLength(diskQueueLength)
+                    .setDiskTransferTime(diskTransferTime).build();
+
+            diskMetricList.add(diskMetric);
         }
 
         return diskMetricList.toArray(new DiskMetric[0]);

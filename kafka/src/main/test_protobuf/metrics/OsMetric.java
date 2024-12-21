@@ -3,7 +3,7 @@
 // source: metrics.proto
 // Protobuf Java Version: 4.28.3
 
-package com.vlad.metrics.models;
+package metrics;
 
 /**
  * Protobuf type {@code com.vlad.metrics.models.OsMetric}
@@ -32,15 +32,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return Metrics.internal_static_metrics_OsMetric_descriptor;
+    return metrics.Metrics.internal_static_metrics_OsMetric_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return Metrics.internal_static_metrics_OsMetric_fieldAccessorTable
+    return metrics.Metrics.internal_static_metrics_OsMetric_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            OsMetric.class, OsMetric.Builder.class);
+            metrics.OsMetric.class, metrics.OsMetric.Builder.class);
   }
 
   public static final int OS_NAME_FIELD_NUMBER = 1;
@@ -175,10 +175,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof OsMetric)) {
+    if (!(obj instanceof metrics.OsMetric)) {
       return super.equals(obj);
     }
-    OsMetric other = (OsMetric) obj;
+    metrics.OsMetric other = (metrics.OsMetric) obj;
 
     if (!getOsName()
         .equals(other.getOsName())) return false;
@@ -213,44 +213,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static OsMetric parseFrom(byte[] data)
+  public static metrics.OsMetric parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static OsMetric parseFrom(java.io.InputStream input)
+  public static metrics.OsMetric parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -258,26 +258,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static OsMetric parseDelimitedFrom(java.io.InputStream input)
+  public static metrics.OsMetric parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static OsMetric parseDelimitedFrom(
+  public static metrics.OsMetric parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static OsMetric parseFrom(
+  public static metrics.OsMetric parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -290,7 +290,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(OsMetric prototype) {
+  public static Builder newBuilder(metrics.OsMetric prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -311,18 +311,18 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:com.vlad.metrics.models.OsMetric)
-          OsMetricOrBuilder {
+      metrics.OsMetricOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Metrics.internal_static_metrics_OsMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_OsMetric_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Metrics.internal_static_metrics_OsMetric_fieldAccessorTable
+      return metrics.Metrics.internal_static_metrics_OsMetric_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              OsMetric.class, OsMetric.Builder.class);
+              metrics.OsMetric.class, metrics.OsMetric.Builder.class);
     }
 
     // Construct using com.vlad.metrics.models.OsMetric.newBuilder()
@@ -349,17 +349,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return Metrics.internal_static_metrics_OsMetric_descriptor;
+      return metrics.Metrics.internal_static_metrics_OsMetric_descriptor;
     }
 
     @java.lang.Override
-    public OsMetric getDefaultInstanceForType() {
-      return OsMetric.getDefaultInstance();
+    public metrics.OsMetric getDefaultInstanceForType() {
+      return metrics.OsMetric.getDefaultInstance();
     }
 
     @java.lang.Override
-    public OsMetric build() {
-      OsMetric result = buildPartial();
+    public metrics.OsMetric build() {
+      metrics.OsMetric result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -367,14 +367,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public OsMetric buildPartial() {
-      OsMetric result = new OsMetric(this);
+    public metrics.OsMetric buildPartial() {
+      metrics.OsMetric result = new metrics.OsMetric(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(OsMetric result) {
+    private void buildPartial0(metrics.OsMetric result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.osName_ = osName_;
@@ -392,16 +392,16 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof OsMetric) {
-        return mergeFrom((OsMetric)other);
+      if (other instanceof metrics.OsMetric) {
+        return mergeFrom((metrics.OsMetric)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(OsMetric other) {
-      if (other == OsMetric.getDefaultInstance()) return this;
+    public Builder mergeFrom(metrics.OsMetric other) {
+      if (other == metrics.OsMetric.getDefaultInstance()) return this;
       if (!other.getOsName().isEmpty()) {
         osName_ = other.osName_;
         bitField0_ |= 0x00000001;
@@ -651,12 +651,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:com.vlad.metrics.models.OsMetric)
-  private static final OsMetric DEFAULT_INSTANCE;
+  private static final metrics.OsMetric DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new OsMetric();
+    DEFAULT_INSTANCE = new metrics.OsMetric();
   }
 
-  public static OsMetric getDefaultInstance() {
+  public static metrics.OsMetric getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -692,7 +692,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public OsMetric getDefaultInstanceForType() {
+  public metrics.OsMetric getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

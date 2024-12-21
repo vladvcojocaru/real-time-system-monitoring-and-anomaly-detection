@@ -12,7 +12,7 @@ public class OsMetricProducer extends MetricProducer<OsMetric> {
     }
 
     @Override
-    protected String serializeMetric(OsMetric metric) {
-        return metric.toJson(); // Convert OsMetric to JSON
+    protected byte[] serializeMetric(OsMetric metric) {
+        return metric.toByteArray(); // Convert OsMetric to JSON
     }
 }

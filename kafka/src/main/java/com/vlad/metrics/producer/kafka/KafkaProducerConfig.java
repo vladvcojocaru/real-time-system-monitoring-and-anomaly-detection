@@ -16,7 +16,7 @@ public class KafkaProducerConfig {
      *
      * @return A KafkaProducer<String, String> instance configured for the application.
      */
-    public static KafkaProducer<String, String> createProducer() {
+    public static KafkaProducer<String, byte[]> createProducer() {
         // Kafka producer properties
         Properties properties = new Properties();
 
@@ -27,7 +27,7 @@ public class KafkaProducerConfig {
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
         // Serializer for the message values. Configured to use String values.
-        properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put("value.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
 
         // Return a new KafkaProducer instance with the above properties
         return new KafkaProducer<>(properties);

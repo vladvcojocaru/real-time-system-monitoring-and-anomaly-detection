@@ -1,6 +1,7 @@
 package com.vlad.metrics.producer.runnable;
 
 import com.vlad.metrics.producer.kafka.CpuMetricProducer;
+//import com.vlad.metrics.models.old_models.CpuMetric;
 import com.vlad.metrics.models.CpuMetric;
 import com.vlad.metrics.producer.services.CpuMetricService;
 

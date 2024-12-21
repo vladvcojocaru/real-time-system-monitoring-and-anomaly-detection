@@ -9,7 +9,7 @@ public class NetworkMetricProducer extends MetricProducer<NetworkMetric> {
     }
 
     @Override
-    protected String serializeMetric(NetworkMetric metric) {
-        return metric.toJson();
+    protected byte[] serializeMetric(NetworkMetric metric) {
+        return metric.toByteArray();
     }
 }

@@ -8,7 +8,7 @@ public class SensorMetricProducer extends MetricProducer<SensorMetric> {
     }
 
     @Override
-    protected String serializeMetric(SensorMetric metric) {
-        return metric.toJson(); // Convert OsMetric to JSON
+    protected byte[] serializeMetric(SensorMetric metric) {
+        return metric.toByteArray(); // Convert OsMetric to JSON
     }
 }

@@ -2,7 +2,7 @@ package com.vlad.metrics.consumer;
 
 import com.google.gson.Gson;
 import com.vlad.metrics.consumer.kafka.KafkaConsumerConfig;
-import com.vlad.metrics.models.CpuMetric;
+import com.vlad.metrics.models.old_models.CpuMetric;
 import com.vlad.metrics.util.Constants;
 import java.time.Duration;
 import java.util.Arrays;

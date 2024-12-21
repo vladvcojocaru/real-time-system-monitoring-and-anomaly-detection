@@ -26,7 +26,6 @@ public class MainProducer {
         NetworkMetricService networkMetricService = new NetworkMetricService();
         SensorMetricService sensorMetricService = new SensorMetricService();
 
-        // TODO: Combine protobuf with json for efficency
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(
             Constants.CPU_METRICS_TOPIC
         );
