@@ -6,7 +6,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 public class KafkaConsumerConfig {
 
-    public static KafkaConsumer<String, String> createConsumer(String group) {
+    public static KafkaConsumer<String, byte[]> createConsumer(String group) {
         // The Kafka broker(s) to connect to. 'localhost:9092' assumes Kafka is running locally.
         Properties properties = new Properties();
         properties.setProperty(
@@ -20,7 +20,7 @@ public class KafkaConsumerConfig {
         );
         properties.setProperty(
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
-            "org.apache.kafka.common.serialization.StringDeserializer"
+            "org.apache.kafka.common.serialization.ByteArrayDeserializer"
         );
         properties.setProperty(
             ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,

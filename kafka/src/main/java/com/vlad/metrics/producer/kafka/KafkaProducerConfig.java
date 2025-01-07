@@ -1,6 +1,8 @@
 package com.vlad.metrics.producer.kafka;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 
 import java.util.Properties;
 
@@ -17,19 +19,14 @@ public class KafkaProducerConfig {
      * @return A KafkaProducer<String, String> instance configured for the application.
      */
     public static KafkaProducer<String, byte[]> createProducer() {
-        // Kafka producer properties
         Properties properties = new Properties();
 
-        // The Kafka broker(s) to connect to. 'localhost:9092' assumes Kafka is running locally.
-        properties.put("bootstrap.servers", "localhost:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 
-        // Serializer for the message keys. Configured to use String keys.
-        properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
 
-        // Serializer for the message values. Configured to use String values.
-        properties.put("value.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
 
-        // Return a new KafkaProducer instance with the above properties
         return new KafkaProducer<>(properties);
     }
 }
