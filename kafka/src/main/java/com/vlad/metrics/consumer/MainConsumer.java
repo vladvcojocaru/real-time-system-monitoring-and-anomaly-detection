@@ -5,9 +5,12 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.vlad.metrics.consumer.kafka.KafkaConsumerConfig;
 import com.vlad.metrics.models.*;
 import com.vlad.metrics.util.Constants;
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Arrays;
 
+import io.prometheus.client.exporter.HTTPServer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -16,7 +19,9 @@ import org.apache.kafka.common.protocol.types.Field;
 
 public class MainConsumer {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+         HTTPServer server = new HTTPServer(1234);
+
          KafkaConsumer<String, byte[]> consumer = KafkaConsumerConfig.createConsumer(Constants.METRICS_CONSUMER_GROUP);
 
          consumer.subscribe(Arrays.asList(
