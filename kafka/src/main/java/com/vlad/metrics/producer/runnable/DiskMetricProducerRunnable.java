@@ -25,7 +25,7 @@ public class DiskMetricProducerRunnable implements Runnable {
 
                 diskMetricProducer.sendMetrics(diskMetric);
 
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         } catch (InterruptedException e) {
             // Handle interruptions to the main thread (e.g., during shutdown).

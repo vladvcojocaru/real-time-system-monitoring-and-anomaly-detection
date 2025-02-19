@@ -23,7 +23,7 @@ public class SensorMetricProducerRunnable implements Runnable {
 
                 sensorMetricProducer.sendMetric(sensorMetric);
 
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         } catch (InterruptedException e) {
             System.err.println("Producer interrupted: " + e.getMessage());

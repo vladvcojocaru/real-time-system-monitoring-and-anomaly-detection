@@ -22,7 +22,7 @@ public class MemoryMetricProducerRunnable implements Runnable{
 
                 memoryMetricProducer.sendMetric(memoryMetric);
 
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         } catch (InterruptedException e){
             // Handle interruptions to the main thread (e.g., during shutdown).

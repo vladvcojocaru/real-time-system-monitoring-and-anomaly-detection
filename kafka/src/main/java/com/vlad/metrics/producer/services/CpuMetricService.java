@@ -52,7 +52,7 @@ public class CpuMetricService {
             builder.addCoreLoads(coreLoad);
         }
         for(long frequency : currentFrequencies) {
-            builder.addCoreLoads(frequency);
+            builder.addFrequency(frequency);
         }
         return builder.build();
 

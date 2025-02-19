@@ -26,7 +26,7 @@ public class OsMetricProducerRunnable implements Runnable{
                 osMetricProducer.sendMetric(cpuMetric);
 
                 // Wait for 1 second before collecting the next metric.
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         } catch (InterruptedException e) {
             // Handle interruptions to the main thread (e.g., during shutdown).

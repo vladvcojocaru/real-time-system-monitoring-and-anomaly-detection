@@ -3,6 +3,7 @@ import com.vlad.metrics.models.*;
 import io.prometheus.client.Counter;
 import io.prometheus.client.Gauge;
 import io.prometheus.client.exporter.HTTPServer;
+import org.apache.kafka.common.protocol.types.Field;
 
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class PrometheusMetricManager {
             .labelNames("core")
             .register();
 
-    // DISCK METRIC
+    // DISK METRIC
     public static final Counter diskReadsCounter = Counter.build()
             .name("disk_reads_total")
             .help("Total number of disk read operations")
@@ -153,7 +154,11 @@ public class PrometheusMetricManager {
         cpuTotalLoadGauge.set(cpuMetric.getTotalLoad());
         for (int i = 0; i < cpuMetric.getCoreLoadsCount(); i++) {
             cpuCoreLoadGauge.labels(String.valueOf(i)).set(cpuMetric.getCoreLoads(i));
-            cpuFrequencyGauge.labels(String.valueOf(i)).set(cpuMetric.getFrequency(i));
+            if(cpuMetric.getFrequencyCount() > i){
+                cpuFrequencyGauge.labels(String.valueOf(i)).set(cpuMetric.getFrequency(i));
+            } else{
+                cpuFrequencyGauge.labels(String.valueOf(i)).set(cpuMetric.getFrequency(i));
+            }
         }
     }
 
