@@ -4,8 +4,8 @@ import com.vlad.metrics.models.CpuMetric;
 
 
 public class CpuMetricProducer extends MetricProducer<CpuMetric>{
-    public CpuMetricProducer(String topic){
-        super(topic);
+    public CpuMetricProducer(String topic, String machineId){
+        super(topic, machineId);
     }
 
     @Override

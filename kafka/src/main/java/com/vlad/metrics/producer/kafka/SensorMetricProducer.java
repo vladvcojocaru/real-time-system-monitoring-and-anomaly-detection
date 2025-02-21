@@ -3,8 +3,8 @@ package com.vlad.metrics.producer.kafka;
 import com.vlad.metrics.models.SensorMetric;
 
 public class SensorMetricProducer extends MetricProducer<SensorMetric> {
-    public SensorMetricProducer(String topic) {
-        super(topic);
+    public SensorMetricProducer(String topic, String machineId) {
+        super(topic, machineId);
     }
 
     @Override

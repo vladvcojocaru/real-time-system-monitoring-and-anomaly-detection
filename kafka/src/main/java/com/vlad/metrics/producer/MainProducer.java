@@ -4,6 +4,7 @@ import com.vlad.metrics.producer.kafka.*;
 import com.vlad.metrics.producer.runnable.*;
 import com.vlad.metrics.producer.services.*;
 import com.vlad.metrics.util.Constants;
+import com.vlad.metrics.util.MachineIdProvider;
 
 /**
  * Main entry point for the application that produces CPU metrics to Kafka.
@@ -19,6 +20,9 @@ public class MainProducer {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
+        String machineId = MachineIdProvider.getMachineId();
+        System.out.println("\n\nMACHINE ID: " + machineId + "\n");
+
         CpuMetricService cpuMetricService = new CpuMetricService();
         OsMetricService osMetricService = new OsMetricService();
         MemoryMetricService memoryMetricService = new MemoryMetricService();
@@ -27,22 +31,22 @@ public class MainProducer {
         SensorMetricService sensorMetricService = new SensorMetricService();
 
         CpuMetricProducer cpuMetricProducer = new CpuMetricProducer(
-            Constants.CPU_METRICS_TOPIC
+            Constants.CPU_METRICS_TOPIC, machineId
         );
         OsMetricProducer osMetricProducer = new OsMetricProducer(
-            Constants.OS_METRICS_TOPIC
+            Constants.OS_METRICS_TOPIC, machineId
         );
         MemoryMetricProducer memoryMetricProducer = new MemoryMetricProducer(
-            Constants.MEMORY_METRICS_TOPIC
+            Constants.MEMORY_METRICS_TOPIC, machineId
         );
         DiskMetricProducer diskMetricProducer = new DiskMetricProducer(
-            Constants.DISK_METRICS_TOPIC
+            Constants.DISK_METRICS_TOPIC, machineId
         );
         NetworkMetricProducer networkMetricProducer = new NetworkMetricProducer(
-            Constants.NETWORK_METRICS_TOPIC
+            Constants.NETWORK_METRICS_TOPIC, machineId
         );
         SensorMetricProducer sensorMetricProducer = new SensorMetricProducer(
-            Constants.SENSOR_METRICS_TOPIC
+            Constants.SENSOR_METRICS_TOPIC, machineId
         );
 
         Runnable cpuMetricProducerRunnable = new CpuMetricProducerRunnable(

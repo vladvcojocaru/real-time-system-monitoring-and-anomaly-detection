@@ -4,8 +4,8 @@ import com.vlad.metrics.models.MemoryMetric;
 
 public class MemoryMetricProducer extends MetricProducer<MemoryMetric> {
 
-    public MemoryMetricProducer(String topic) {
-        super(topic);
+    public MemoryMetricProducer(String topic, String machineId) {
+        super(topic, machineId);
     }
 
     @Override

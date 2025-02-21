@@ -7,8 +7,8 @@ import com.vlad.metrics.models.OsMetric;
  */
 public class OsMetricProducer extends MetricProducer<OsMetric> {
 
-    public OsMetricProducer(String topic) {
-        super(topic);
+    public OsMetricProducer(String topic, String machineId) {
+        super(topic, machineId);
     }
 
     @Override

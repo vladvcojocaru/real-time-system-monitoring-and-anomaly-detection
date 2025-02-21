@@ -39,26 +39,27 @@ public class MainConsumer {
 
                 for (ConsumerRecord<String, byte[]> record: records){
                     String topic = record.topic();
+                    String key = record.key();
                     byte[] value = record.value();
 
                     switch (topic) {
                         case Constants.CPU_METRICS_TOPIC:
-                            processCpuMetrics(value);
+                            processCpuMetrics(value, key);
                             break;
                         case Constants.DISK_METRICS_TOPIC:
-                            processDiskMetrics(value);
+                            processDiskMetrics(value, key);
                             break;
                         case Constants.MEMORY_METRICS_TOPIC:
-                            processMemoryMetrics(value);
+                            processMemoryMetrics(value, key);
                             break;
                         case Constants.NETWORK_METRICS_TOPIC:
-                            processNetworkMetrics(value);
+                            processNetworkMetrics(value, key);
                             break;
                         case Constants.OS_METRICS_TOPIC:
-                            processOsMetrics(value);
+                            processOsMetrics(value, key);
                             break;
                         case Constants.SENSOR_METRICS_TOPIC:
-                            processSensorMetrics(value);
+                            processSensorMetrics(value, key);
                             break;
                         default:
                             System.err.println("Unknown topic: " + topic);
@@ -69,63 +70,63 @@ public class MainConsumer {
             consumer.close();
         }
     }
-    private static void processCpuMetrics(byte[] value) {
+    private static void processCpuMetrics(byte[] value, String key) {
         try {
             CpuMetric cpuMetric = CpuMetric.parseFrom(value);
-            PrometheusMetricManager.updateCpuMetrics(cpuMetric);
-            System.out.println("CPU Metric: " + cpuMetric);
+            PrometheusMetricManager.updateCpuMetrics(cpuMetric, key);
+            System.out.println("CPU Metric from machine " + key + ":\n" + cpuMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process CPU metric: " + e.getMessage());
+            System.err.println("Failed to process CPU metric from machine " + key + ":\n " + e.getMessage());
         }
     }
 
-    private static void processDiskMetrics(byte[] value) {
+    private static void processDiskMetrics(byte[] value, String key) {
         try {
             DiskMetric diskMetric = DiskMetric.parseFrom(value);
-            PrometheusMetricManager.updateDiskMetrics(diskMetric);
-            System.out.println("Disk Metric: " + diskMetric);
+            PrometheusMetricManager.updateDiskMetrics(diskMetric, key);
+            System.out.println("Disk Metric from machine " + key + ":\n" + diskMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process Disk metric: " + e.getMessage());
+            System.err.println("Failed to process Disk metric from machine " + key + ":\n" + e.getMessage());
         }
     }
 
-    private static void processMemoryMetrics(byte[] value) {
+    private static void processMemoryMetrics(byte[] value, String key) {
         try {
             MemoryMetric memoryMetric = MemoryMetric.parseFrom(value);
-            PrometheusMetricManager.updateMemoryMetrics(memoryMetric);
-            System.out.println("Memory Metric: " + memoryMetric);
+            PrometheusMetricManager.updateMemoryMetrics(memoryMetric, key);
+            System.out.println("Memory Metric from machine " + key + ":\n" + memoryMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process Memory metric: " + e.getMessage());
+            System.err.println("Failed to process Memory metric from machine " + key + ":\n" + e.getMessage());
         }
     }
 
-    private static void processNetworkMetrics(byte[] value) {
+    private static void processNetworkMetrics(byte[] value, String key) {
         try {
             NetworkMetric networkMetric = NetworkMetric.parseFrom(value);
-            PrometheusMetricManager.updateNetworkMetrics(networkMetric);
-            System.out.println("Network Metric: " + networkMetric);
+            PrometheusMetricManager.updateNetworkMetrics(networkMetric, key);
+            System.out.println("Network Metric from machine " + key + ":\n" + networkMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process Network metric: " + e.getMessage());
+            System.err.println("Failed to process Network metric from machine " + key + ":\n" + e.getMessage());
         }
     }
 
-    private static void processOsMetrics(byte[] value) {
+    private static void processOsMetrics(byte[] value, String key) {
         try {
             OsMetric osMetric = OsMetric.parseFrom(value);
-            PrometheusMetricManager.updateOsMetrics(osMetric);
-            System.out.println("OS Metric: " + osMetric);
+            PrometheusMetricManager.updateOsMetrics(osMetric, key);
+            System.out.println("OS Metric from machine " + key + ":\n" + osMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process OS metric: " + e.getMessage());
+            System.err.println("Failed to process OS metric from machine " + key + ":\n" + e.getMessage());
         }
     }
 
-    private static void processSensorMetrics(byte[] value) {
+    private static void processSensorMetrics(byte[] value, String key) {
         try {
             SensorMetric sensorMetric = SensorMetric.parseFrom(value);
-            PrometheusMetricManager.updateSensorMetrics(sensorMetric);
-            System.out.println("Sensor Metric: " + sensorMetric);
+            PrometheusMetricManager.updateSensorMetrics(sensorMetric, key);
+            System.out.println("Sensor Metric from machine " + key + ":\n" + sensorMetric);
         } catch (InvalidProtocolBufferException e) {
-            System.err.println("Failed to process Sensor metric: " + e.getMessage());
+            System.err.println("Failed to process Sensor metric from machine " + key + ":\n" + e.getMessage());
         }
     }
 }
