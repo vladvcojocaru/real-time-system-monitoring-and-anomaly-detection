@@ -2,12 +2,25 @@
 
 # TODO: Check logs dir permissions
 
+
 set -e  # Exit immediately if a command exits with a non-zero status.
 
 # Log helper function
 log() {
   echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"
 }
+
+# Generate IP and PORT for server.properties
+MY_IP=$(hostname -i | awk '{print $1}')
+PORT=9092
+BOOTSTRAP_SERVER="$MY_IP:$PORT"
+BROKER_PASSWORD="password"  # Replace with a strong password
+
+# Write to server.properties the correct IP and PORT
+sed -i "s/^advertised.listeners=.*/advertised.listeners=PLAINTEXT:\/\/${MY_IP}:${PORT}/" server.properties
+# TODO: change 9093 to MY_IP + 1
+sed -i "s/^listeners=.*/listeners=PLAINTEXT:\/\/${MY_IP}:${PORT},CONTROLLER:\/\/${MY_IP}:9093/" server.properties
+
 
 # Directories and configurations
 HOME_DIR="$HOME/kafka-data"
@@ -23,9 +36,6 @@ BROKER_CERT="$CERTS_DIR/broker-cert.pem"
 BROKER_PKCS12="$CERTS_DIR/broker.p12"
 BROKER_TRUSTSTORE="$CERTS_DIR/broker-truststore.p12"
 
-BROKER_PASSWORD="password"  # Replace with a strong password
-BROKER_PORT=9092
-BOOTSTRAP_SERVER="localhost:$BROKER_PORT"
 
 # Create directories if they don't exist
 log "Ensuring required directories exist..."
@@ -77,16 +87,10 @@ export KAFKA_OPTS="-Xlog:gc*:file=$LOG_DIR/kafkaServer-gc.log:time,tags:filecoun
 log "Starting Kafka server..."
 kafka-server-start.sh server.properties &
 
-# Wait for Kafka to fully start
-# log "Waiting for Kafka to start..."
-# until kafka-broker-api-versions.sh --bootstrap-server "$BOOTSTRAP_SERVER" &>/dev/null; do
-#   log "Kafka is not ready. Retrying in 2 seconds..."
-#   sleep 2
-# done
 
 log "Waiting for Kafka to start on port 9092..."
-until nc -z localhost 9092; do
-  log "Port 9092 is not open. Retrying in 2 seconds..."
+until nc -z $MY_IP $PORT; do
+  log "Port $PORT is not open. Retrying in 2 seconds..."
   sleep 2
 done
 log "Kafka is ready. Proceeding with topic setup."
@@ -125,94 +129,5 @@ topic_exists() {
  create_topic_if_not_exists "network-metrics" 3 1 ""
  create_topic_if_not_exists "sensor-metrics" 3 1 ""
 
-# Ensure the __consumer_offsets topic exists
-#log "Ensuring topic '__consumer_offsets' exists..."
-#if topic_exists "__consumer_offsets"; then
-#  log "Topic '__consumer_offsets' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic __consumer_offsets \
-#    --partitions 50 \
-#    --replication-factor 1 \
-#    --config cleanup.policy=compact
-#  log "Topic '__consumer_offsets' created successfully."
-#fi
-#
-## Ensure the cpu-metrics topic exists
-#log "Ensuring topic 'cpu-metrics' exists..."
-#if topic_exists "cpu-metrics"; then
-#  log "Topic 'cpu-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic cpu-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'cpu-metrics' created successfully."
-#fi
-#
-## Ensure the os-metrics topic exists
-#log "Ensuring topic 'os-metrics' exists..."
-#if topic_exists "os-metrics"; then
-#  log "Topic 'os-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic os-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'os-metrics' created successfully."
-#fi
-#
-## Ensure the memory-metrics topic exists
-#log "Ensuring topic 'memory-metrics' exists..."
-#if topic_exists "memory-metrics"; then
-#  log "Topic 'memory-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic memory-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'memory-metrics' created successfully."
-#fi
-#
-## Ensure the disk-metrics topic exists
-#log "Ensuring topic 'disk-metrics' exists..."
-#if topic_exists "disk-metrics"; then
-#  log "Topic 'disk-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic disk-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'disk-metrics' created successfully."
-#fi
-#
-## Ensure the network-metrics topic exists
-#log "Ensuring topic 'network-metrics' exists..."
-#if topic_exists "network-metrics"; then
-#  log "Topic 'network-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic network-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'network-metrics' created successfully."
-#fi
-#
-#log "Ensuring topic 'sensor-metrics' exists..."
-#if topic_exists "sensor-metrics"; then
-#  log "Topic 'sensor-metrics' already exists, skipping creation."
-#else
-#  kafka-topics.sh --bootstrap-server localhost:9092 \
-#    --create \
-#    --topic sensor-metrics \
-#    --partitions 3 \
-#    --replication-factor 1
-#  log "Topic 'sensor-metrics' created successfully."
-#fi
 log "Script completed successfully."
+echo "Kafka broker is running and accessible at ${MY_IP}:${PORT}"

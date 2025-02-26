@@ -1,6 +1,7 @@
 # IDE-related files (IntelliJ, VSCode, etc.)
 .idea/
 .vscode/
+kafka-data/
 
 # Maven build files
 /target/
