@@ -1,5 +1,6 @@
 # IDE-related files (IntelliJ, VSCode, etc.)
 .idea/
+.settings/
 .vscode/
 kafka-data/
 
