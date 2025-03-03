@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Arrays;
 
-import io.prometheus.client.exporter.HTTPServer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -20,24 +19,21 @@ public class MainConsumer {
     public static void main(String[] args) throws IOException {
          KafkaConsumer<String, byte[]> consumer = KafkaConsumerConfig.createConsumer(Constants.METRICS_CONSUMER_GROUP);
 
-         consumer.subscribe(Arrays.asList(
-                 Constants.CPU_METRICS_TOPIC,
-                 Constants.NETWORK_METRICS_TOPIC,
-                 Constants.OS_METRICS_TOPIC,
-                 Constants.DISK_METRICS_TOPIC,
-                 Constants.MEMORY_METRICS_TOPIC,
-                 Constants.SENSOR_METRICS_TOPIC
-         ));
-
-        System.out.println("Subscribed to metrics topics");
-
-        PrometheusMetricManager.startMetricsServer(1234);
-
-        try{
-            while(true){
+        try (consumer) {
+            consumer.subscribe(Arrays.asList(
+                    Constants.CPU_METRICS_TOPIC,
+                    Constants.NETWORK_METRICS_TOPIC,
+                    Constants.OS_METRICS_TOPIC,
+                    Constants.DISK_METRICS_TOPIC,
+                    Constants.MEMORY_METRICS_TOPIC,
+                    Constants.SENSOR_METRICS_TOPIC
+            ));
+            System.out.println("Subscribed to metrics topics");
+            PrometheusMetricManager.startMetricsServer(1234);
+            while (true) {
                 ConsumerRecords<String, byte[]> records = consumer.poll(Duration.ofMillis(5000));
 
-                for (ConsumerRecord<String, byte[]> record: records){
+                for (ConsumerRecord<String, byte[]> record : records) {
                     String topic = record.topic();
                     String key = record.key();
                     byte[] value = record.value();
@@ -61,13 +57,12 @@ public class MainConsumer {
                         case Constants.SENSOR_METRICS_TOPIC:
                             processSensorMetrics(value, key);
                             break;
+
                         default:
                             System.err.println("Unknown topic: " + topic);
                     }
                 }
             }
-        } finally {
-            consumer.close();
         }
     }
     private static void processCpuMetrics(byte[] value, String key) {
