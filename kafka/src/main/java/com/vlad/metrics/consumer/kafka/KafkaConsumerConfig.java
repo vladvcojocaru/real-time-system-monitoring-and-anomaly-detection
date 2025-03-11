@@ -11,7 +11,7 @@ public class KafkaConsumerConfig {
         Properties properties = new Properties();
         properties.setProperty(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-            "localhost:9092"
+            "192.168.0.101:9092"
         );
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, group);
         properties.setProperty(

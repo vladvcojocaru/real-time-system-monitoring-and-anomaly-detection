@@ -80,7 +80,7 @@ mkdir -p "$METADATA_DIR"
 mkdir -p "$CERTS_DIR"
 
 # Export log configurations
-export LOG_DIR="$HOME/kafka-data/logs"
+export LOG_DIR="/opt/kafka-data/logs"
 export KAFKA_OPTS="-Xlog:gc*:file=$LOG_DIR/kafkaServer-gc.log:time,tags:filecount=10,filesize=100M"
 
 

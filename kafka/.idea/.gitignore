@@ -6,3 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+*jaas.conf
+*.jks
+*.p12
+*.password
+/config/secrets/
