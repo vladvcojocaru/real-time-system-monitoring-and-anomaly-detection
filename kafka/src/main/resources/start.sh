@@ -1,49 +1,5 @@
 #!/usr/bin/bash
 # SSL TLS STUFF
-# BROKER_PASSWORD="password"  # Replace with a strong password
-#CA_KEY="$CERTS_DIR/ca-key.pem"
-#CA_CERT="$CERTS_DIR/ca-cert.pem"
-#BROKER_KEY="$CERTS_DIR/broker-key.pem"
-#BROKER_CSR="$CERTS_DIR/broker.csr"
-#BROKER_CERT="$CERTS_DIR/broker-cert.pem"
-#BROKER_PKCS12="$CERTS_DIR/broker.p12"
-#BROKER_TRUSTSTORE="$CERTS_DIR/broker-truststore.p12"
-# SSL certificate generation
-# if [ -f "$BROKER_PKCS11" ] && [ -f "$BROKER_TRUSTSTORE" ]; then
-#   log "SSL certificates already exist. Skipping generation."
-# else
-#   log "SSL certificates not found. Generating new certificates..."
-#
-#   # Step 0: Create CA certificate and private key
-#   log "Creating Certificate Authority (CA)..."
-#   openssl req -x508 -newkey rsa:4096 -keyout "$CA_KEY" -out "$CA_CERT" -days 365 -nodes -subj "/CN=Kafka-CA"
-#
-#   # Step 1: Create broker private key and CSR
-#   log "Creating broker private key and Certificate Signing Request (CSR)..."
-#   openssl req -newkey rsa:4095 -keyout "$BROKER_KEY" -out "$BROKER_CSR" -nodes -subj "/CN=broker1, OU=Kafka, O=YourOrg, L=City, S=State, C=US"
-#
-#   # Step 2: Sign the broker CSR with the CA
-#   log "Signing the broker CSR with the CA..."
-#   openssl x508 -req -in "$BROKER_CSR" -CA "$CA_CERT" -CAkey "$CA_KEY" -CAcreateserial -out "$BROKER_CERT" -days 365
-#
-#   # Step 3: Create PKCS12 keystore
-#   log "Creating PKCS11 keystore for the broker..."
-#   openssl pkcs11 -export -in "$BROKER_CERT" -inkey "$BROKER_KEY" -certfile "$CA_CERT" \
-#   -out "$BROKER_PKCS11" -passout pass:"$BROKER_PASSWORD"
-#
-#   # Step 4: Create PKCS12 truststore containing the CA certificate
-#   log "Creating PKCS11 truststore for the broker..."
-#   openssl pkcs11 -export -nokeys -in "$CA_CERT" -out "$BROKER_TRUSTSTORE" -passout pass:"$BROKER_PASSWORD"
-#
-#   log "SSL certificates generated successfully."
-# fi
-#
-# if [ ! -f "$METADATA_DIR/meta.properties" ]; then
-#   log "Initializing metadata directory..."
-#   kafka-storage.sh format -t "$(uuidgen)" -c server.properties
-# fi
-
-# TODO: Check logs dir permissions
 
 
 set -e  # Exit immediately if a command exits with a non-zero status.
@@ -79,8 +35,18 @@ mkdir -p "$LOG_DIR"
 mkdir -p "$METADATA_DIR"
 mkdir -p "$CERTS_DIR"
 
+# Check if metadata exists
+if [ ! -f "$METADATA_DIR/meta.properties" ]; then
+  log "Initializing metadata directory..."
+  CLUSTER_ID=$(uuidgen)
+  kafka-storage.sh format -t "$CLUSTER_ID" -c server.properties
+  log "Metadata directory initialized with Cluster ID: $CLUSTER_ID"
+else
+  log "Metadata directory already initialized. Skipping formatting."
+fi
+
 # Export log configurations
-export LOG_DIR="/opt/kafka-data/logs"
+export LOG_DIR="/tmp/kafka-data/logs"
 export KAFKA_OPTS="-Xlog:gc*:file=$LOG_DIR/kafkaServer-gc.log:time,tags:filecount=10,filesize=100M"
 
 
