@@ -21,7 +21,7 @@ public class KafkaProducerConfig {
     public static KafkaProducer<String, byte[]> createProducer() {
         Properties properties = new Properties();
 
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.0.101:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
 

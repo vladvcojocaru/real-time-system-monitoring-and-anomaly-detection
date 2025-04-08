@@ -11,7 +11,7 @@ log() {
 
 # Generate IP and PORT for server.properties
 #MY_IP=$(hostname -i | awk '{print $1}')
-MY_IP="192.168.0.101"
+MY_IP="localhost"
 PORT=9092
 BOOTSTRAP_SERVER="$MY_IP:$PORT"
 
