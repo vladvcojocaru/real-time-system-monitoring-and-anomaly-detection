@@ -3,6 +3,8 @@
 .settings/
 .vscode/
 kafka-data/
+.class
+.project
 
 # Maven build files
 /target/
