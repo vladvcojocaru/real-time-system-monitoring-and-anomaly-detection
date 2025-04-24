@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package metrics;
+
+option java_multiple_files = true;
+
+message CpuMetric {
+  double totalLoad = 1;
+  repeated double coreLoads = 2;
+  repeated int64 frequency = 3;
+}
+
+message DiskMetric {
+  string diskName = 1;
+  int64 diskReads = 2;
+  int64 diskWrites = 3;
+  int64 diskReadBytes = 4;
+  int64 diskWriteBytes = 5;
+  int64 diskQueueLength = 6;
+  int64 diskTransferTime = 7;
+}
+
+message MemoryMetric {
+  int64 totalPhysicalMemory = 1;
+  int64 usedPhysicalMemory = 2;
+  int64 totalSwapMemory = 3;
+  int64 usedSwapMemory = 4;
+  int64 virtualMemoryUsed = 5;
+}
+
+message NetworkMetric{
+  string name = 1;
+  string displayName = 2;
+  int64 bytesSent = 3;
+  int64 bytesRecv = 4;
+  int64 packetsSent = 5;
+  int64 packetsRecv = 6;
+  repeated string ipv4Addresses = 7;
+  repeated string ipv6Addresses = 8;
+  string macAddress = 9;
+}
+
+message OsMetric {
+  string os_name = 1;
+  int64 uptime = 2;
+  int32 processes = 3;
+  int32 threads = 4;
+}
+
+message SensorMetric{
+
+ double cpuTemperature = 1;
+ repeated int32 fanSpeeds = 2;
+ double cpuVoltage = 3;
+}
