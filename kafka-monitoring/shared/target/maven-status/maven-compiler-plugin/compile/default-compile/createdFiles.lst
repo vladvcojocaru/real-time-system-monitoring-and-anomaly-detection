@@ -27,8 +27,8 @@ metrics/OsMetric.class
 com/vlad/metrics/models/MemoryMetric$1.class
 com/vlad/metrics/models/MemoryMetric.class
 metrics/OsMetric$1.class
-metrics/OsMetricOrBuilder.class
 metrics/MemoryMetric$Builder.class
+metrics/OsMetricOrBuilder.class
 metrics/DiskMetric$1.class
 metrics/NetworkMetric$1.class
 metrics/MemoryMetricOrBuilder.class
@@ -47,7 +47,7 @@ com/vlad/metrics/models/CpuMetric$1.class
 com/vlad/metrics/models/DiskMetric$1.class
 com/vlad/metrics/prometheus/PrometheusMetricManager.class
 metrics/DiskMetric$Builder.class
-metrics/CpuMetric.class
 metrics/CpuMetric$1.class
+metrics/CpuMetric.class
 com/vlad/metrics/util/MachineIdProvider.class
 com/vlad/metrics/models/DiskMetric$Builder.class

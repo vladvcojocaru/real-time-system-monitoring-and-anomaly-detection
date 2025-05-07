@@ -1,9 +1,9 @@
-com/vlad/metrics/producer/runnable/OsMetricProducerRunnable.class
 com/vlad/metrics/producer/kafka/CpuMetricProducer.class
-com/vlad/metrics/producer/services/MemoryMetricService.class
+com/vlad/metrics/producer/runnable/OsMetricProducerRunnable.class
 com/vlad/metrics/producer/services/CpuMetricService.class
-com/vlad/metrics/producer/kafka/DiskMetricProducer.class
+com/vlad/metrics/producer/services/MemoryMetricService.class
 com/vlad/metrics/producer/kafka/OsMetricProducer.class
+com/vlad/metrics/producer/kafka/DiskMetricProducer.class
 com/vlad/metrics/producer/runnable/MemoryMetricProducerRunnable.class
 com/vlad/metrics/producer/services/DiskMetricService.class
 com/vlad/metrics/producer/MainProducer.class
@@ -12,8 +12,8 @@ com/vlad/metrics/producer/kafka/MetricProducer.class
 com/vlad/metrics/producer/runnable/CpuMetricProducerRunnable.class
 com/vlad/metrics/producer/kafka/SensorMetricProducer.class
 com/vlad/metrics/producer/kafka/NetworkMetricProducer.class
-com/vlad/metrics/producer/runnable/NetworkMetricProducerRunnable.class
 com/vlad/metrics/producer/kafka/MemoryMetricProducer.class
+com/vlad/metrics/producer/runnable/NetworkMetricProducerRunnable.class
 com/vlad/metrics/producer/services/SensorMetricService.class
 com/vlad/metrics/producer/services/OsMetricService.class
 com/vlad/metrics/producer/runnable/SensorMetricProducerRunnable.class

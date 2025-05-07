@@ -1,2 +1,2 @@
-com/vlad/metrics/consumer/MainConsumer.class
 com/vlad/metrics/consumer/kafka/KafkaConsumerConfig.class
+com/vlad/metrics/consumer/MainConsumer.class
